@@ -1,0 +1,28 @@
+.icon-lg {
+    width: 3.5rem;
+    height: 3.5rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 1.5rem;
+    line-height: 1;
+}
+
+.container{
+    /* position: absolute; */
+    /* left: 52px;
+    background-color: gray; */
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    background-color: rgba(112, 112, 112, 0);
+    top: 0%;
+    left: 0%;
+    height: 90px;
+}
+
+.details{
+    padding-top: 80px;
+    background-color: rgba(112, 112, 112, 0);
+}

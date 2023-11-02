@@ -1,0 +1,97 @@
+<body>
+    <div class="card">
+        <div class="card-body">
+            <form [formGroup]="updateZoneForm" (ngSubmit)="onSubmit(updateZoneForm)">
+
+                <h1 class="text-center h3 mb-3 font-weight-normal">Update Zone</h1>
+                <div class="me-5 mt-3">
+                    <div class="form-group">
+                        <label for="name" class="sr-only">Name</label>
+                        <input type="name" name="name" id="name" class="form-control" placeholder="Name your geofence"
+                            required formControlName="name">
+                    </div>
+                </div>
+                <br>
+                <div class="me-5 mt-3">
+                    <div class="form-group">
+                        <label for="lat" class="sr-only">Latitutde</label>
+                        <input type="address" name="lat" id="lat" class="form-control"
+                            placeholder="latitude" required formControlName="lat">
+                    </div>
+                </div>
+                <br>
+                <div class="me-5 mt-3">
+                    <div class="form-group">
+                        <label for="lng" class="sr-only">Longitude</label>
+                        <input type="address" name="lng" id="lng" class="form-control"
+                            placeholder="longitude" required formControlName="lng">
+                    </div>
+                </div>
+                <br>
+                <div class="me-5 mt-3">
+                    <div class="form-group">
+                        <label for="radius" class="sr-only">Radius</label>
+                        <input type="number" name="radius" id="radius" class="form-control"
+                            placeholder="km radius" required formControlName="radius">
+                    </div>
+                </div>
+                <div class="card1">
+                    <div class="card-body1">
+                        <h2>Devices</h2>
+                        <table class="table table-hover table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Missing</th>
+                                    <th>State</th>
+                                    <th>
+                                        <mat-checkbox (change)="selectAll($event)"></mat-checkbox>
+                                        Select All
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let device of devices | paginate: { id: 'device_pagination',
+        itemsPerPage: 10, currentPage: page, totalItems: totalRecords }">
+                                    <td>{{device.name}}</td>
+                                    <td>{{device.missing}}</td>
+                                    <td>{{device.state}}</td>
+                                    <td>
+                                        <mat-checkbox (change)="selectRow(device.name)"></mat-checkbox>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div>
+                            <pagination-controls id="device_pagination"
+                                (pageChange)="page = $event"></pagination-controls>
+                        </div>
+                    </div>
+                </div>
+                <!-- <br>
+                <div class="me-5 mt-3">
+                    <mat-form-field class="dropdown">
+                        <mat-label>Select Device</mat-label>
+                        <mat-select [(value)]="selectedDevices">
+                            <mat-option *ngFor="let device of devices" [value]="device">
+                                {{device}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div> -->
+                <!-- <div class="me-5 mt-3">
+                    <mat-slider min="706.9" max="10000000" step="10000" showTickMarks discrete [displayWith]="formatLabel">
+                        <input matSliderThumb>
+                    </mat-slider>
+                </div> -->
+                
+                <br>
+                <div class="col-sm-15">
+                    <button class="btn btn-success btn-block me-5" type="submit"
+                        [disabled]="!updateZoneForm.valid">Create</button>
+
+                </div>
+            </form>
+        </div>
+    </div>
+</body>

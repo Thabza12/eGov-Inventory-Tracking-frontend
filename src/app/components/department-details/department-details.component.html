@@ -1,0 +1,71 @@
+<div class="container">
+
+    <div class="card">
+        <div class="card-body">
+            <div class="col">
+                <button (click)="export()" class="btn btn-outline-info me-2">
+                    Export to PDF
+                </button>
+                <button (click)="devices()" class="btn btn-outline-info">
+                    View Devices
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="card1">
+        <div class="card-body">
+
+            <ngx-charts-number-card [view]="viewsView" [scheme]="colorScheme" [results]="loanedData"
+                [cardColor]="cardColor" (select)="onSelect($event)">
+            </ngx-charts-number-card>
+
+
+        </div>
+    </div>
+    <div class="card2">
+        <div class="card-body">
+
+            <ngx-charts-number-card [view]="viewsView" [scheme]="colorScheme" [results]="notLoaned"
+                [cardColor]="cardColor" (select)="onSelect($event)">
+            </ngx-charts-number-card>
+
+
+        </div>
+    </div>
+    <div class="card3">
+        <div class="card-body">
+
+            <ngx-charts-number-card [view]="viewsView" [scheme]="colorScheme" [results]="missing"
+                [cardColor]="cardColor" (select)="onSelect($event)">
+            </ngx-charts-number-card>
+
+
+        </div>
+    </div>
+    <div class="card4">
+        <div class="card-body">
+
+            <ngx-charts-number-card [view]="viewsView" [scheme]="colorScheme" [results]="notMissingDevices"
+                [cardColor]="cardColor" (select)="onSelect($event)">
+            </ngx-charts-number-card>
+
+
+        </div>
+    </div>
+    <div class="card5">
+        <div class="card-body">
+
+            <ngx-charts-bar-vertical [view]="barView" [scheme]="colorScheme" [results]="barChartData"
+                [gradient]="gradient" [xAxis]="showXAxis" [yAxis]="showYAxis" [legend]="legend"
+                [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel" [xAxisLabel]="xAxisLabelBar"
+                [yAxisLabel]="yAxisLabelBar" (select)="onSelect($event)">
+            </ngx-charts-bar-vertical>
+
+
+        </div>
+    </div>
+
+
+
+</div>

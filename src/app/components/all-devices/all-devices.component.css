@@ -1,0 +1,14 @@
+.container{
+    cursor: pointer;
+    width: fit-content;
+    height: 70px;
+    /* display: flex;
+    justify-content: center; */
+    position: absolute;
+    top: 105px;
+    left: 160px;
+}
+
+.row{
+    padding: 10px;
+}

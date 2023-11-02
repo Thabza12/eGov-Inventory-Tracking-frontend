@@ -1,0 +1,43 @@
+.container{
+    padding-top: 70px;
+}
+
+.card1{
+    position: absolute;
+    width: fit-content;
+    height: fit-content;
+    top: 15%;
+    left: 10%;
+}
+
+.card2{
+    position: absolute;
+    width: fit-content;
+    height: fit-content;
+    top: 15%;
+    left: 30%;
+}
+
+.card3{
+    position: absolute;
+    width: fit-content;
+    height: fit-content;
+    top: 15%;
+    left: 50%;
+}
+
+.card4{
+    position: absolute;
+    width: fit-content;
+    height: fit-content;
+    top: 15%;
+    left: 70%;
+}
+
+.card5{
+    position: absolute;
+    width: fit-content;
+    height: fit-content;
+    top: 50%;
+    left: 10%;
+}

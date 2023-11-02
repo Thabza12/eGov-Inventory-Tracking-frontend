@@ -1,0 +1,19 @@
+.icon-lg {
+    width: 3.5rem;
+    height: 3.5rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 1.5rem;
+    line-height: 1;
+}
+
+.container{
+    position: absolute;
+    left: 52px;
+}
+
+.details{
+    padding-top: 80px;
+}

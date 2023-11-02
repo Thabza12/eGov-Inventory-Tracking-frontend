@@ -1,0 +1,12 @@
+.card{
+    position: absolute;
+    width: 300px;
+    display: flex;
+    justify-content: center;
+    left: 20%;
+    top: 20%;
+}
+
+.mat-slider{
+    width: 300px;
+  }

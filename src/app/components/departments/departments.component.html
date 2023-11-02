@@ -1,0 +1,40 @@
+<div class="container">
+    <div class="row">
+        <div class="col" *ngFor="let department of departments">
+            <app-department-card class="department-card" (click)="manageDevices(department.name)" [department]="department"></app-department-card>
+        </div>
+    </div>
+</div>
+
+
+<!-- <div class="card">
+    <div class="card-body">
+        <h2>Departments</h2>
+        <br>
+        <table class="table table-hover table-striped">
+            <thead>
+                <tr>
+                    <th>Department</th>
+                    <th>Setup Key</th>
+                    <th>Created</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let department of departments | paginate: { id: 'department_pagination',
+            itemsPerPage: 10, currentPage: page, totalItems: totalRecords }">
+                    <td>{{department.name}}</td>
+                    <td>{{department.setup_key}}</td>
+                    <td>{{department.created_at}}</td>
+                    <td>
+                        <button (click)="manageDevices(department.name)" class="btn btn-outline-info">
+                            Devices
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div>
+            <pagination-controls id="department_pagination" (pageChange)="page = $event"></pagination-controls>
+        </div>
+    </div>
+</div> -->

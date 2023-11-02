@@ -1,0 +1,51 @@
+<div class="container">
+    <!-- <div class="container"> -->
+    <img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.pngwing.com%2Fen%2Fsearch%3Fq%3Dbeautiful%2Bbackground&psig=AOvVaw0eVr60c44635ZWpOAvX-9v&ust=1698938116863000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCLCVxOqLo4IDFQAAAAAdAAAAABAE"
+        style="width: 100%; height: 100%;">
+</div>
+<div class="card">
+    <div class="card-body">
+        <mat-icon aria-hidden="false" aria-label="Example add icon" fontIcon="add"
+            (click)="createAutomation()"></mat-icon>
+    </div>
+
+    <div class="card1">
+        <div class="card-body1">
+            <!-- <h2>Automations</h2> -->
+            <br>
+            <table class="table table-hover table-striped">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>State</th>
+                        <th>Timezone</th>
+                        <th>Action</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let automation of automationsData | paginate: { id: 'zone_pagination',
+                        itemsPerPage: 10, currentPage: page, totalItems: totalRecords }">
+                        <td>{{automation.name}}</td>
+                        <td>{{automation.state}}</td>
+                        <td>{{automation.timezone}}</td>
+                        <td>
+                            <!-- <button (click)="automationDetails(automation.name)" class="btn btn-outline-info">
+                                Details
+                            </button> -->
+                            <button (click)="automationDetails(automation.name)" style="height: 35px;" type="button" class="btn btn-outline-info me-2">
+                                <mat-icon aria-label="info icon" fontIcon="info"></mat-icon>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div>
+                <pagination-controls id="zone_pagination" (pageChange)="page = $event"></pagination-controls>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- </div> -->

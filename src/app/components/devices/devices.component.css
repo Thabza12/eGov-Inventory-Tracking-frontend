@@ -1,0 +1,19 @@
+.card{
+    position: absolute;
+    width: 500px;
+    display: flex;
+    justify-content: center;
+    left: 20%;
+    top: 20%;
+}
+
+.container{
+    cursor: pointer;
+    width: 800px;
+    /* height: 70px; */
+    /* display: flex;
+    justify-content: center; */
+    position: absolute;
+    top: 105px;
+    left: 177px;
+}

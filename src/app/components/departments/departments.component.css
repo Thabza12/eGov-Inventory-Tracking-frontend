@@ -1,0 +1,22 @@
+/* .row{
+    po
+} */
+
+.card{
+    position: absolute;
+    width: fit-content;
+    display: flex;
+    justify-content: center;
+    left: 20%;
+    top: 20%;
+}
+
+.container{
+    cursor: pointer;
+    width: fit-content;
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    top: 105px;
+    left: 177px;
+}

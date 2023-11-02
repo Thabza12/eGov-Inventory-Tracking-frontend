@@ -1,0 +1,74 @@
+<div class="card" style="width: 230px; margin-top: 80px;">
+
+    <div class="card-header">
+        <div class="container">
+            <img src="\assets\logo\laptop-icon.jpg" alt="Image Description"
+                class="icon-lg bg-primary rounded-3 text-white" style="height: 100px; width: 100px; position: relative; left: 20%; margin-bottom: 15px;"/>
+        </div>
+
+        <h4 class="card-title">{{ device.name }}</h4>
+
+    </div>
+
+    <div class="card-body">
+
+
+
+        <div class="details">
+            <!-- <div class="device-name">
+                <h4 class="card-title">{{ device.name }}</h4>
+
+            </div> -->
+            <!-- <mat-divider></mat-divider> -->
+            <!-- <div class="card" style="position: relative; top: 30px; height: 400px; padding-bottom: 20px;">
+                <div class="card-body"> -->
+                    <mat-list>
+                        <!-- <mat-list-item>OS</mat-list-item> -->
+                        
+                        <!-- <mat-divider></mat-divider> -->
+                        <h3>OS</h3>
+                        <h5>{{device.os_details.os}}</h5>
+                        <mat-divider></mat-divider>
+                        <!-- <mat-list-item>Description</mat-list-item> -->
+                        <h3>Description</h3>
+                        <h5>{{ device.description }}</h5>
+                        <mat-divider></mat-divider>
+                        <!-- <mat-list-item>Missing</mat-list-item> -->
+                        <h3>Missing</h3>
+                        <h5>{{device.missing}}</h5>
+                        <mat-divider></mat-divider>
+                        <!-- <mat-list-item>Client Outdated</mat-list-item> -->
+                        <h3>Client Outdated</h3>
+                        <h5>{{device.client_outdated}}</h5>
+                    </mat-list>
+
+                <!-- </div>
+
+            </div> -->
+
+
+
+        </div>
+        <div class="card-footer" style="display: flex; justify-content: center;">
+
+            <div class="col" style="position: relative; left: 30%;">
+                <button style="height: 35px;" type="button"
+                    class="btn btn-outline-info me-2">
+                    <mat-icon aria-label="info icon" fontIcon="info"></mat-icon>
+                </button>
+                <!-- <button style="height: 35px;" (click)="openDialog(device.name)" class="btn btn-outline-primary me-2">
+                    <mat-icon aria-label="delete icon" fontIcon="delete"></mat-icon>
+                </button> -->
+
+            </div>
+            <!-- <div class="col">
+                
+            </div> -->
+
+
+
+
+
+        </div>
+    </div>
+</div>

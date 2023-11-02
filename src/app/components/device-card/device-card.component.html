@@ -1,0 +1,50 @@
+<div class="card" style="height: 470px;">
+    <div class="card-body">
+
+        <div class="container">
+            <img src="\assets\logo\laptop-icon.jpg" alt="Image Description"
+                class="icon-lg bg-primary rounded-3 text-white" style="position: absolute; top: 18px;"/>
+        </div>
+
+        <div class="details">
+            <div class="card" style="position: relative; top: 30px; height: fit-content;">
+                <div class="card-body">
+                    <mat-list>
+                        <!-- <mat-list-item>OS</mat-list-item> -->
+                        <h2>{{ device.name }}</h2>
+                        <mat-divider></mat-divider>
+                        <!-- <mat-list-item>Description</mat-list-item> -->
+                        <h3>Operating System</h3>
+                        <h5>{{ device.os }}</h5>
+                        <mat-divider></mat-divider>
+                        <!-- <mat-list-item>Missing</mat-list-item> -->
+                        <h3>Missing</h3>
+                        <h5>{{device.missing}}</h5>
+                        <mat-divider></mat-divider>
+                        <!-- <mat-list-item>Client Outdated</mat-list-item> -->
+                        <h3>Description</h3>
+                        <h5>{{ device.description }}</h5>
+                    </mat-list>
+
+                </div>
+                <!-- <h4 class="card-text">{{ device.os }}</h4> -->
+                <!-- <h5 class="card-text"></h5> -->
+
+                
+                <!-- <h4 class="card-text">{{ device.missing }}</h4> -->
+                <!-- <h2 class="card-title">{{ device.logged_user }}</h2> -->
+            </div>
+            <!-- <h2 class="card-title"></h2>
+            <h4 class="card-text"></h4>
+            <h4 class="card-text"></h4>
+            <h4 class="card-text">{{ device.missing }}</h4> -->
+
+        </div>
+
+        <!-- <p class="card-text">{{ device.client_outdated }}</p>
+        <p class="card-text">{{ device.last_checked_in }}</p>
+        <p class="card-text">{{ device.serial_number }}</p>
+        <p class="card-text">{{ device.ram_size }}</p>
+        <p class="card-text">{{ device.online }}</p> -->
+    </div>
+</div>

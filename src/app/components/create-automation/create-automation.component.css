@@ -1,0 +1,12 @@
+.card{
+    position: absolute;
+    width: fit-content;
+    display: flex;
+    justify-content: center;
+    left: 20%;
+    top: 20%;
+}
+
+.mdc-checkbox .mdc-checkbox__native-control:enabled:not(:checked):not(:indeterminate):not([data-indeterminate=true])~.mdc-checkbox__background {
+    border-color: rgb(19 18 18 / 54%);
+}

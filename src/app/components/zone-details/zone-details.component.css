@@ -1,0 +1,59 @@
+.container {
+    /* text-align: center; */
+    width: 1000px;
+    height: 600px;
+
+    #card {
+        position: absolute;
+        width: 800px;
+        display: flex;
+        justify-content: center;
+        left: 0%;
+        top: 20%;
+
+        #h2 {
+            position: absolute;
+            left: 20%;
+        }
+
+        #p {
+            position: absolute;
+            left: 20%;
+        }
+
+        #container {
+            position: absolute;
+            padding-top: 150px;
+            width: 660px;
+            left: 0%;
+            top: 50%;
+
+        }
+    }
+
+    .card1 {
+        position: absolute;
+        width: fit-content;
+        display: flex;
+        justify-content: center;
+        left: 68%;
+        top: 0%;
+    }
+}
+
+
+
+
+
+
+
+
+/* .card3{
+    position: absolute;
+    width: fit-content;
+    display: flex;
+    justify-content: center;
+    left: 50%;
+    top: 50%;
+    
+}  */
