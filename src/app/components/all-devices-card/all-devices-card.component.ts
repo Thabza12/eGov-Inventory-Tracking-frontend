@@ -7,7 +7,7 @@ import { Component, Input } from '@angular/core';
 })
 export class AllDevicesCardComponent {
 
-  @Input() device: any;
+  @Input() TheDevices: any;
 
   openDialog(name: string){
 

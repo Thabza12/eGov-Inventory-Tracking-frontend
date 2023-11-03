@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AllDevices } from 'src/app/classes/all-devices';
 import { SharedService } from 'src/app/services/shared.service';
+import { HttpClient,HttpHeaders, HttpParams} from '@angular/common/http';
 
 @Component({
   selector: 'app-all-devices',
@@ -659,14 +660,22 @@ export class AllDevicesComponent implements OnInit {
   totalRecords!: any;
   page: number = 1;
   searchQuery = '';
+  page_size:number =20;
+  TheDevices:any[] | undefined;
 
 
   constructor(private _shared: SharedService,
-    private _router: Router){}
+    private _router: Router,private http:HttpClient){}
 
   ngOnInit(): void {
     // this.devices = this._shared.getAllDevices();
-    
+    this.loadData();
+  }
+  loadData(){
+    const params = new HttpParams().set('page',this.page).set('page_size',this.page_size);
+    this.http.get('http://localhost:8081/AllDevices',{params}).subscribe((data:any)=>{
+      this.TheDevices = data;
+    });
   }
 
   deviceDetails(id: any){
