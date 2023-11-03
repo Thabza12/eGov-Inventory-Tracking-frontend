@@ -8,22 +8,9 @@ import * as mapboxgl from 'mapbox-gl';
   styleUrls: ['./map.component.css']
 })
 export class MapComponent implements OnInit {
-  constructor(http:HttpClient){}
+  constructor(private http:HttpClient){}
   map!: mapboxgl.Map;
-  geofences:any[]=[
-    {
-      id:'McDonald',
-      coordinates:[28.109291259845257, -26.018600700505942],
-      radius:50,
-      color:'blue'
-    },
-    {
-      id:'Pnp',
-      coordinates:[28.11280040425119, -25.94478836550434],
-      radius:100,
-      color:'red'
-    }
-  ];
+  geofences:any[]=[];
   ngOnInit(): void {
     (mapboxgl as typeof mapboxgl).accessToken = 'pk.eyJ1IjoibmVvemEiLCJhIjoiY2xvZnkwOTRiMHh1YTJrcndmam82em42aSJ9.DAxTwxCFRRjQ_BZ7y4ODgw'
      this.map = new mapboxgl.Map({
@@ -31,6 +18,10 @@ export class MapComponent implements OnInit {
       style: 'mapbox://styles/mapbox/streets-v12', // style URL
       center: [28.11280040425119, -25.94478836550434], // starting position [lng, lat]
       zoom: 9, // starting zoom
+      });
+      const path ='53d668';
+      this.http.get('http://localhost:8081/Zones/'+path).subscribe((data:any)=>{
+        this.geofences=data;
       });
       this.map.on('load',()=>{
         this.geofences.forEach(geofence=>{

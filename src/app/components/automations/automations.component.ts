@@ -6,6 +6,7 @@ import { Departments } from 'src/app/classes/departments';
 import { Devices } from 'src/app/classes/devices';
 import { ApiService } from 'src/app/services/api.service';
 import { SharedService } from 'src/app/services/shared.service';
+import { HttpClient,HttpHeaders, HttpParams} from '@angular/common/http';
 
 @Component({
   selector: 'app-automations',
@@ -251,14 +252,22 @@ export class AutomationsComponent implements OnInit {
   automations: Automations[] = [];
   totalRecords!: any;
   page: number = 1;
-
-
-  constructor(private _router: Router,) { }
+  page_size:number = 10;
+  constructor(private _router: Router,private http:HttpClient) { }
 
 
   ngOnInit(): void {
-    
-
+    this.loadData();
+  }
+  loadData(){
+    const params = new HttpParams().set('page',this.page).set('page_size',this.page_size);
+    this.http.get('http://localhost:8081/Automations',{params}).subscribe((data:any)=>{
+      this.automations= data;
+    });
+  }
+  changePage(pg:number){
+    this.page+=pg;
+    this.loadData();
   }
 
   automationDetails(name: string) {

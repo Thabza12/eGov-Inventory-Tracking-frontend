@@ -5,6 +5,7 @@ import { MatDialog, MatDialogConfig, MatDialogModule } from '@angular/material/d
 import { SharedService } from 'src/app/services/shared.service';
 import { ZoneDetailsComponent } from '../zone-details/zone-details.component';
 import { UpdateZoneComponent } from '../update-zone/update-zone.component';
+import { HttpClient,HttpHeaders, HttpParams} from '@angular/common/http';
 
 @Component({
   selector: 'app-control-zones',
@@ -123,20 +124,33 @@ export class ControlZonesComponent implements OnInit {
       }
     }
   ]
-
+  ZoneInfo!: any[];
   zones: Zones[] = [];
   totalRecords!: any;
   page: number = 1;
+  page_size:number = 5;
+  private options = {headers: new HttpHeaders().set('Content-Type','application/json')};
 
   constructor(private _router: Router,
     private _shared: SharedService,
-    public dialog: MatDialog) { }
+    public dialog: MatDialog,
+    private http:HttpClient) { }
 
   ngOnInit(): void {
-    this.zones = this.zonesData
-
+    
+    this.loadData();
   }
 
+  loadData(){
+    const params = new HttpParams().set('page',this.page).set('page_size',this.page_size);
+    this.http.get('http://localhost:8081/Zones',{params}).subscribe((data:any)=>{
+      this.zones = data;
+    });
+  }
+  changePage(pg:number){
+    this.page+=pg;
+    this.loadData();
+  }
   createZone() {
     this._shared.setZoneDetails([this.zones])
     this._router.navigate(['create-zone']);

@@ -1,10 +1,11 @@
-<div class="container">
-    <div class="search-bar">
-        <input type="text" name="search" [(ngModel)]="searchQuery" (input)="filterData()" placeholder="Search Devices...">
-    </div>
-    <div class="row">
-        <div class="col" *ngFor="let device of devices">
-            <app-all-devices-card (click)="deviceDetails(device.id)" [device]="device"></app-all-devices-card>
+
+    <div class="container">
+        <div class="search-bar">
+            <input type="text" name="search" [(ngModel)]="searchQuery" (input)="filterData()" placeholder="Search Devices...">
+        </div>
+        <div class="row">
+            <div class="col" *ngFor="let device of devices">
+                <app-all-devices-card (click)="deviceDetails(device.id)" [device]="device"></app-all-devices-card>
+            </div>
         </div>
     </div>
-</div>

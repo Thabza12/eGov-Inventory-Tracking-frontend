@@ -1,10 +1,11 @@
 .card {
-    position: absolute;
-    width: 900px;
+
+    width: 800px;
     display: flex;
     justify-content: center;
     left: 25%;
     top: 20%;
+    align-items: center;
 
     .card-body {
         position: absolute;
@@ -19,12 +20,18 @@
         position: absolute;
         width: fit-content;
         display: flex;
-        padding: 20px;
+        padding: 5px;
         justify-content: center;
         left: 40%;
         top: 40%;
     
     }
+    
+}
+.table{
+    height: 100px;
+    width: 750px;
+
 }
 
 .container{
@@ -32,7 +39,7 @@
     width: 100%;
     background-color: black; */
     position: absolute;
-    top: 55px;
+    top: 75px;
     left: 0%;
     height: 100%; 
     width: 100%; 
@@ -46,6 +53,4 @@
     margin: 0;
     background-size: cover;
     /* background-color: black; */
-    background-image: url('src\\assets\\logo\\png-transparent-beautiful-colored-light-background-fashion-technology-poster-banner-science-and-technology-thumbnail.png');
-    filter: blur(10px);
 }
