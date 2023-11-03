@@ -1,6 +1,11 @@
 body {
     background: #f4f3ef;
   }
+  #map{
+    top: 50px;
+    height: 80vh;
+    width: 100%;
+}
 
 
 

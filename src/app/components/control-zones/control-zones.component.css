@@ -4,7 +4,7 @@
     display: flex;
     justify-content: center;
     left: 25%;
-    top: 20%;
+    top: 200px;
     align-items: center;
 
     .card-body {
