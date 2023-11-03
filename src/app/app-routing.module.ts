@@ -13,6 +13,7 @@ import { AllDevicesComponent } from './components/all-devices/all-devices.compon
 import { CreateAutomationComponent } from './components/create-automation/create-automation.component';
 import { AllDevicesDetailsComponent } from './components/all-devices-details/all-devices-details.component';
 import { MapComponent } from './components/map/map.component';
+import { UpdateZoneComponent } from './components/update-zone/update-zone.component';
 
 const routes: Routes = [
   {path: '', component: DashboardComponent},
@@ -20,6 +21,7 @@ const routes: Routes = [
   {path: 'departments', component: DepartmentsComponent},
   {path: 'devices', component: DevicesComponent},
   {path: 'map', component: MapComponent},
+  {path: 'update-zone', component: UpdateZoneComponent},
   {path: 'device-management', component: AllDevicesDetailsComponent},
   {path: 'all-devices', component: AllDevicesComponent},
   {path: 'create-automation', component: CreateAutomationComponent},

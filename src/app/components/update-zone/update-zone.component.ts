@@ -1,25 +1,7 @@
-import { Component, Inject, OnInit } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { Actions } from 'src/app/classes/actions';
-import { Devices } from 'src/app/classes/devices';
-import { Notifications } from 'src/app/classes/notifications';
-import { DailogData } from '../zone-details/zone-details.component';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, UntypedFormControl, UntypedFormGroup } from '@angular/forms';
 import { SharedService } from 'src/app/services/shared.service';
 
-export interface UpdateZoneData {
-
-  id: string,
-  name: string,
-  lat: any,
-  lng: any
-  radius: number,
-  color: any,
-  devices: Devices,
-  actions: Actions,
-  notifications: Notifications
-
-}
 
 @Component({
   selector: 'app-update-zone',
@@ -30,6 +12,7 @@ export interface UpdateZoneData {
 export class UpdateZoneComponent implements OnInit {
 
   updateZoneForm = new UntypedFormGroup({});
+  zoneDetails!: any[];
   sizes: any[] = ['Small', 'Medium', 'Large'];
   devices: any[] = [];
   selectedDevices: any;
@@ -41,27 +24,21 @@ export class UpdateZoneComponent implements OnInit {
   selectedRows = new Set<any>();
 
 
-  constructor(public dialogRef: MatDialogRef<UpdateZoneComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: UpdateZoneData,
-    private _fb: FormBuilder,
+  constructor(private _fb: FormBuilder,
     private _shared: SharedService) { }
 
   ngOnInit(): void {
 
-    this.dialogRef.disableClose = false;
-
-    // this.devices = this._shared.getZonesDetails();
+    this.zoneDetails = this._shared.getZonesDetails();
 
     this.updateZoneForm = this._fb.group({
-      'name': new UntypedFormControl(this.data.name),
-      'lat': new UntypedFormControl(this.data.lat),
-      'lng': new UntypedFormControl(this.data.lng),
-      'radius': new UntypedFormControl(this.data.radius),
-      'devices': new UntypedFormControl(this.data.devices),
-      'actions': new UntypedFormControl(this.data.actions),
-      'notifications': new UntypedFormControl(this.data.notifications)
-      // 'plan': new UntypedFormControl(this.data.plan),
-      // 'premiumAmount': new UntypedFormControl(this.data.premiumAmount)
+      'name': new UntypedFormControl(this.zoneDetails[0].name),
+      'lat': new UntypedFormControl(this.zoneDetails[0].lat),
+      'lng': new UntypedFormControl(this.zoneDetails[0].lng),
+      'radius': new UntypedFormControl(this.zoneDetails[0].radius),
+      'devices': new UntypedFormControl(this.zoneDetails[0].devices),
+      'actions': new UntypedFormControl(this.zoneDetails[0].actions),
+      'notifications': new UntypedFormControl(this.zoneDetails[0].notifications)
 
     });
   }

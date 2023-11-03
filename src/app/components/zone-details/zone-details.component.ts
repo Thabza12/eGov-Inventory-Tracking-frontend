@@ -8,21 +8,6 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dial
 import { Devices } from 'src/app/classes/devices';
 import { Notifications } from 'src/app/classes/notifications';
 
-export interface DailogData {
-  // lat: any;
-  // name: string;
-  id: string,
-  name: string,
-  lat: any,
-  lng: any
-  radius: number,
-  color: any,
-  devices: Devices,
-  actions: Actions,
-  notifications: Notifications
-
-}
-
 @Component({
   selector: 'app-zone-details',
   templateUrl: './zone-details.component.html',
@@ -49,28 +34,16 @@ export class ZoneDetailsComponent implements OnInit {
   totalActions!: any;
   totalDevices!: any;
 
-  constructor(private _shared: SharedService,
-    public dialog: MatDialog,
-    public dialogRef: MatDialogRef<ZoneDetailsComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: DailogData) { }
+  constructor(private _shared: SharedService) { }
 
 
   ngOnInit(): void {
 
-    this.dialogRef.disableClose = false;
-
-    const details = this._shared.getZonesDetails();
-    console.log(details[0].name);
-    details.forEach(element => {
-      if (this.data.name === element.name) {
-        this.details = [element];
-        this.radiusCard(element);
-        this.zoneDevices(element);
-        this.zoneActions(element);
-        console.log('zone details', element);
-      }
-    });
-
+    this.details = this._shared.getZonesDetails();
+    this.radiusCard(this._shared.getZonesDetails());
+    this.zoneDevices(this._shared.getZonesDetails());
+    this.zoneActions(this._shared.getZonesDetails());
+    console.log('zone details', this.details);
 
   }
 

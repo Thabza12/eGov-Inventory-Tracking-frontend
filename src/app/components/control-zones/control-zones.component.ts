@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Zones } from 'src/app/classes/zones';
-import { MatDialog, MatDialogConfig, MatDialogModule } from '@angular/material/dialog';
 import { SharedService } from 'src/app/services/shared.service';
 import { ZoneDetailsComponent } from '../zone-details/zone-details.component';
 import { UpdateZoneComponent } from '../update-zone/update-zone.component';
-import { HttpClient,HttpHeaders, HttpParams} from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 
 @Component({
   selector: 'app-control-zones',
@@ -128,27 +127,26 @@ export class ControlZonesComponent implements OnInit {
   zones: Zones[] = [];
   totalRecords!: any;
   page: number = 1;
-  page_size:number = 5;
-  private options = {headers: new HttpHeaders().set('Content-Type','application/json')};
+  page_size: number = 5;
+  private options = { headers: new HttpHeaders().set('Content-Type', 'application/json') };
 
   constructor(private _router: Router,
     private _shared: SharedService,
-    public dialog: MatDialog,
-    private http:HttpClient) { }
+    private http: HttpClient) { }
 
   ngOnInit(): void {
-    
+
     this.loadData();
   }
 
-  loadData(){
-    const params = new HttpParams().set('page',this.page).set('page_size',this.page_size);
-    this.http.get('http://localhost:8081/Zones',{params}).subscribe((data:any)=>{
+  loadData() {
+    const params = new HttpParams().set('page', this.page).set('page_size', this.page_size);
+    this.http.get('http://localhost:8081/Zones', { params }).subscribe((data: any) => {
       this.zones = data;
     });
   }
-  changePage(pg:number){
-    this.page+=pg;
+  changePage(pg: number) {
+    this.page += pg;
     this.loadData();
   }
   createZone() {
@@ -158,74 +156,27 @@ export class ControlZonesComponent implements OnInit {
 
 
 
-  openDialog(name: string) {
+  zoneDetails(name: string) {
+    this.zones.forEach(zone => {
+      if (name === zone.name) {
+        this._shared.setZoneDetails([zone])
+        this._router.navigate(['zone-details'])
 
-    this._shared.setZoneDetails(this.zones)
-    // this._router.navigate(['zone-details'])
+      }
 
-    const dialogConfig = new MatDialogConfig();
-
-    dialogConfig.autoFocus = false;
-
-    dialogConfig.data = {
-      name: name
-    }
-
-    const dialogRef = this.dialog.open(ZoneDetailsComponent, dialogConfig);
-
-    dialogRef.afterClosed().subscribe(data => {
-      console.log(`Dialog result: ${data}`);
     });
-
-    // this.zones.forEach(zone => {
-    //   if (name === zone.name) {
-
-
-    //   }
-
-    // });
-
-
 
   }
 
-  edit(name: string){
+  edit(name: string) {
+    this.zones.forEach(zone => {
+      if (name === zone.name) {
+        this._shared.setZoneDetails(this.zones)
+        this._router.navigate(['update-zone'])
 
-    console.log(name);
-
-    const dialogConfig = new MatDialogConfig();
-    dialogConfig.autoFocus = false;
-
-    let selectedZone: Zones = new Zones()
-
-    for (let i = 0; i < this.zones.length; i++) {
-      const zone = this.zones[i];
-      if (name == zone.name) {
-        selectedZone = zone
-        this._shared.setZoneDetails(selectedZone);
       }
-      
-    }
 
-    dialogConfig.data = {
-      
-      id: selectedZone.id,
-      name: selectedZone.name,
-      lat: selectedZone.lat,
-      lng: selectedZone.lng,
-      radius: selectedZone.radius,
-      color: selectedZone.color,
-      devices: selectedZone.devices,
-      actions: selectedZone.actions,
-      notifications: selectedZone.notifications
-
-    }
-
-    const dialogRef = this.dialog.open(UpdateZoneComponent, dialogConfig);
-
-    dialogRef.afterClosed().subscribe(data =>{
-      console.log("dialog output: ", data);
-    })
+    });
 
   }
 

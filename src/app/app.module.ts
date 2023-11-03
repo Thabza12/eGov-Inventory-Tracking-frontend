@@ -13,7 +13,6 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSelectModule } from '@angular/material/select';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
-import {MatDialogModule} from '@angular/material/dialog';
 import { MatListModule } from '@angular/material/list';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -67,7 +66,6 @@ import { TheMapComponent } from './components/the-map/the-map.component';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    MatDialogModule,
     MatDividerModule,
     MatIconModule,
     MatCheckboxModule,

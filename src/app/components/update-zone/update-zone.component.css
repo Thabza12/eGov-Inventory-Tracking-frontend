@@ -1,4 +1,13 @@
 .card {
     width: 500px;
-    height: 400px;
+    height: fit-content;
+    left: 600px;
+    top: 139px;
+
+    
+
 }
+
+.continer {
+    margin-top: 40px;
+} 
