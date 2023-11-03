@@ -37,6 +37,7 @@ import { CreateAutomationComponent } from './components/create-automation/create
 import { AllDevicesDetailsComponent } from './components/all-devices-details/all-devices-details.component';
 import { UpdateZoneComponent } from './components/update-zone/update-zone.component';
 import { MapComponent } from './components/map/map.component';
+import { TheMapComponent } from './components/the-map/the-map.component';
 
 @NgModule({
   declarations: [
@@ -58,7 +59,8 @@ import { MapComponent } from './components/map/map.component';
     CreateAutomationComponent,
     AllDevicesDetailsComponent,
     UpdateZoneComponent,
-    MapComponent
+    MapComponent,
+    TheMapComponent
   ],
   imports: [
     BrowserModule,

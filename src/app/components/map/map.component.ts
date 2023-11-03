@@ -10,7 +10,14 @@ import * as mapboxgl from 'mapbox-gl';
 export class MapComponent implements OnInit {
   constructor(private http:HttpClient){}
   map!: mapboxgl.Map;
-  geofences:any[]=[];
+  geofences:any[]=[
+    {
+      id:'pnp',
+      coordinates:[28.11280040425119,-25.94478836550434],
+      radius:50,
+      color:'blue'
+    }
+  ];
   ngOnInit(): void {
     (mapboxgl as typeof mapboxgl).accessToken = 'pk.eyJ1IjoibmVvemEiLCJhIjoiY2xvZnkwOTRiMHh1YTJrcndmam82em42aSJ9.DAxTwxCFRRjQ_BZ7y4ODgw'
      this.map = new mapboxgl.Map({
@@ -19,10 +26,7 @@ export class MapComponent implements OnInit {
       center: [28.11280040425119, -25.94478836550434], // starting position [lng, lat]
       zoom: 9, // starting zoom
       });
-      const path ='53d668';
-      this.http.get('http://localhost:8081/Zones/'+path).subscribe((data:any)=>{
-        this.geofences=data;
-      });
+    
       this.map.on('load',()=>{
         this.geofences.forEach(geofence=>{
           this.map.addLayer({
