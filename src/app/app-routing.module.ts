@@ -15,6 +15,7 @@ import { AllDevicesDetailsComponent } from './components/all-devices-details/all
 import { MapComponent } from './components/map/map.component';
 import { UpdateZoneComponent } from './components/update-zone/update-zone.component';
 import { TheMapComponent } from './components/the-map/the-map.component';
+import { AutomationDetailsComponent } from './components/automation-details/automation-details.component';
 
 const routes: Routes = [
   {path: '', component: DashboardComponent},
@@ -32,7 +33,8 @@ const routes: Routes = [
   {path: 'automations', component: AutomationsComponent},
   {path: 'control-zones', component: ControlZonesComponent},
   {path: 'create-zone', component: CreateZoneComponent},
-  {path: 'TheMap',component:TheMapComponent}
+  {path: 'TheMap',component:TheMapComponent},
+  {path: 'automation-details',component:AutomationDetailsComponent}
 ];
 
 @NgModule({

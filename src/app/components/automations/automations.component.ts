@@ -7,6 +7,7 @@ import { Devices } from 'src/app/classes/devices';
 import { ApiService } from 'src/app/services/api.service';
 import { SharedService } from 'src/app/services/shared.service';
 import { HttpClient,HttpHeaders, HttpParams} from '@angular/common/http';
+import { AutomationDevices } from 'src/app/classes/automation-devices';
 
 @Component({
   selector: 'app-automations',
@@ -253,7 +254,7 @@ export class AutomationsComponent implements OnInit {
   totalRecords!: any;
   page: number = 1;
   page_size:number = 10;
-  constructor(private _router: Router,private http:HttpClient) { }
+  constructor(private _router: Router,private http:HttpClient,private _shared:SharedService) { }
 
 
   ngOnInit(): void {
@@ -271,8 +272,16 @@ export class AutomationsComponent implements OnInit {
   }
 
   automationDetails(name: string) {
-
+    this.automations.forEach(Auto => {
+      if (name === Auto.name) {
+        this._shared.setAutomationDetails([Auto])
+        this._router.navigate(['automation-details'])
+        // console.log(name)
+        console.log(Auto)
+      }
+    });
   }
+  
 
   createAutomation() {
     this._router.navigate(['create-automation']);

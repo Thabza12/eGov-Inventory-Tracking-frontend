@@ -36,7 +36,6 @@ export class ZoneDetailsComponent implements OnInit {
 
   constructor(private _shared: SharedService) { }
 
-
   ngOnInit(): void {
 
     this.details = this._shared.getZonesDetails();

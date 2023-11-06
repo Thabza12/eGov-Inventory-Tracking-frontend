@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Devices } from '../classes/devices';
 import { Departments } from '../classes/departments';
 import { Zones } from '../classes/zones';
+import { Automations } from '../classes/automations';
 
 @Injectable({
   providedIn: 'root'
@@ -12,12 +13,18 @@ export class SharedService {
   allDevices!: any[];
   departments: Departments[] = [];
   zone: Zones[] = [];
+  automation:Automations[]=[];
   departmentDetails: Departments[] = []
   deviceDetails: Devices[] = [];
 
   constructor() { }
 
-
+  getAutomationDetails(){
+    return this.automation
+  }
+  setAutomationDetails(data:any){
+    this.automation=data;
+  }
   setDevices(devices: any){
     this.departmentDevices = devices;
   }
