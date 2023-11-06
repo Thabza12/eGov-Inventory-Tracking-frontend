@@ -10,13 +10,13 @@ import { Notifications } from 'src/app/classes/notifications';
 
 @Component({
   selector: 'app-zone-details',
-  templateUrl: './zone-details.component.html',
+  templateUrl:'./zone-details.component.html',
   styleUrls: ['./zone-details.component.css']
 })
 export class ZoneDetailsComponent implements OnInit {
 
 
-
+  id:any;
   details!: any[];
   devices: ZoneDevices[] = [];
   actions: Actions[] = [];
@@ -40,16 +40,18 @@ export class ZoneDetailsComponent implements OnInit {
   ngOnInit(): void {
 
     this.details = this._shared.getZonesDetails();
+    this.id = this._shared.getZonesDetails()[0].id;
     this.radiusCard(this._shared.getZonesDetails());
     this.zoneDevices(this._shared.getZonesDetails());
     this.zoneActions(this._shared.getZonesDetails());
     console.log('zone details', this.details);
+    console.log(this.id);
 
   }
 
   zoneDevices(data: any) {
-    if (data.devices) {
-      this.devices = data.devices;
+    if (data[0].devices) {
+      this.devices = data[0].devices;
       this.totalDevices = this.devices.length;
       console.log('devices', this.devices);
     }
@@ -57,8 +59,8 @@ export class ZoneDetailsComponent implements OnInit {
   }
 
   zoneActions(data: any) {
-    if (data.actions) {
-      this.actions = data.actions;
+    if (data[0].actions) {
+      this.actions = data[0].actions;
       this.totalActions = this.actions.length;
       console.log('actions', this.actions);
     }

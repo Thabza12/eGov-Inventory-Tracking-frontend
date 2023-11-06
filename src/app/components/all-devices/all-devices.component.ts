@@ -661,7 +661,7 @@ export class AllDevicesComponent implements OnInit {
   page: number = 1;
   searchQuery = '';
   page_size:number =10;
-  TheDevices:any[] | undefined;
+  TheDevices:any[] =[];
 
 
   constructor(private _shared: SharedService,
@@ -679,7 +679,7 @@ export class AllDevicesComponent implements OnInit {
   }
 
   deviceDetails(id: any){
-    this.devices.forEach(device => {
+    this.TheDevices.forEach(device => {
       if (id === device.id) {
         this._shared.setDeviceDetails(device)
         this._router.navigate(['device-management']);
@@ -691,11 +691,11 @@ export class AllDevicesComponent implements OnInit {
 
   filterData() {
     if (this.searchQuery) {
-      this.devices = this.devices.filter(item =>
+      this.TheDevices = this.TheDevices.filter(item =>
         item.name.toLowerCase().includes(this.searchQuery.toLowerCase())
       );
     } else {
-      this.devices = this.devices;
+      this.TheDevices = this.TheDevices;
     }
   }
 
