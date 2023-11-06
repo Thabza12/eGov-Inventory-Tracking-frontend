@@ -14,17 +14,21 @@
     width: 100%;
     position: absolute;
     top: 0;
-    .header-text{
-    font-size: 50px;
-    font-style: italic;
     text-align: center;
-    }
+    
     .logo{
         width: 100%;
         height: auto;
         bottom: 1000px;
     }
 }
+.header-text{
+    font-size: 50px;
+    font-style: italic;
+    text-align: right;
+    text-align: center;
+    
+    }
 
 .navbar{
     position: relative;

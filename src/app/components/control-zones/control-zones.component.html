@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
+
 
 <head>
     <meta charset="utf-8" />
@@ -10,10 +9,7 @@
       href="https://netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
       rel="stylesheet"
     />
-    <link
-      href="/src/app/components/the-map/the-map.component.css"
-      rel="stylesheet"
-    />
+    
     <link
       href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"
       rel="stylesheet"
@@ -25,7 +21,7 @@
         <div id="sidebar-wrapper">
             <ul class="sidebar-nav">
                 <li>
-                    <a routerLink="/">Dashboard</a>
+                    <a routerLink="/">Assets</a>
                 </li>
                 <li>
                     <a href="all-devices">Devices</a>
@@ -83,9 +79,7 @@
                                     id: 'zone_pagination',
                                     itemsPerPage: 10,
                                     currentPage: page,
-                                    totalItems: totalRecords
-                                  }
-                          ">
+                                    totalItems: totalRecords}">
                                                 <td>{{ zone.name }}</td>
                                                 <td>{{ zone.lat }}</td>
                                                 <td>{{ zone.lng }}</td>
@@ -116,5 +110,3 @@
         </div>
     </div>
 </body>
-
-</html>

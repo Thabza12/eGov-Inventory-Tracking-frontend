@@ -161,7 +161,7 @@ export class ControlZonesComponent implements OnInit {
       if (name === zone.name) {
         this._shared.setZoneDetails([zone])
         this._router.navigate(['zone-details'])
-
+        console.log(name)
       }
 
     });

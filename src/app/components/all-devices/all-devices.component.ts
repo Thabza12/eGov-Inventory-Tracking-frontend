@@ -660,7 +660,7 @@ export class AllDevicesComponent implements OnInit {
   totalRecords!: any;
   page: number = 1;
   searchQuery = '';
-  page_size:number =20;
+  page_size:number =10;
   TheDevices:any[] | undefined;
 
 
