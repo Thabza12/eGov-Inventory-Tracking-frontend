@@ -1,16 +1,13 @@
 
-<!DOCTYPE html>
-<html lang="en">
-  <head>
+  <!-- <head>
     <meta charset="utf-8" />
 
-    <title>Sidebar left menu </title>
+    <title>Sidebar left menu</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link
       href="https://netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
       rel="stylesheet"
     />
-    
   </head>
   <body>
     <link
@@ -20,48 +17,57 @@
     <div id="wrapper" class="wrapper-content">
       <div id="sidebar-wrapper">
         <ul class="sidebar-nav">
-            <li>
-                <a routerLink="/">Assets</a>
-              </li>
-              <li>
-                <a href="all-devices">Devices</a>
-              </li>
-              <li>
-                <a href="departments">Departments</a>
-              </li>
-              <li>
-                <a href="automations">Automations</a>
-              </li>
-              <li>
-                <a href="control-zones">Control Zones</a>
-              </li>
-              <li>
-                <a href="TheMap">Map</a>
-              </li>
-    
-              <li>
-                <a href="#">Logout</a>
-              </li>
+          <li>
+            <a routerLink="/">Assets</a>
+          </li>
+          <li>
+            <a href="all-devices">Devices</a>
+          </li>
+          <li>
+            <a href="departments">Departments</a>
+          </li>
+          <li>
+            <a href="automations">Automations</a>
+          </li>
+          <li>
+            <a href="control-zones">Control Zones</a>
+          </li>
+          <li>
+            <a href="TheMap">Map</a>
+          </li>
+
+          <li>
+            <a href="#">Logout</a>
+          </li>
         </ul>
       </div>
       <div id="page-content-wrapper">
         <div class="container-fluid">
           <div class="row">
-            <div class="col-lg-12">
+            <div class="col-lg-12"> -->
               <div class="container">
-        <div class="search-bar">
-            <input type="text" name="search" [(ngModel)]="searchQuery" (input)="filterData()" placeholder="Search Devices...">
-        </div>
-        <div class="row">
-            <div class="col" *ngFor="let device of TheDevices">
-                <app-all-devices-card (click)="deviceDetails(device.id)" [TheDevices]="device"></app-all-devices-card>
-            </div>
+                <div class="search-bar">
+                  <input
+                    type="text"
+                    name="search"
+                    [(ngModel)]="searchQuery"
+                    (input)="filterData()"
+                    placeholder="Search Devices..."
+                  />
+                </div>
+                <div class="row">
+                  <div class="col" *ngFor="let device of TheDevices">
+                    <app-all-devices-card
+                      (click)="deviceDetails(device.id)"
+                      [TheDevices]="device"
+                    ></app-all-devices-card>
+                  </div>
                 </div>
               </div>
-            </div>
+            <!-- </div>
           </div>
         </div>
       </div>
     </div>
   </body>
-</html>
+</html> -->

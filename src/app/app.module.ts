@@ -37,6 +37,7 @@ import { AllDevicesDetailsComponent } from './components/all-devices-details/all
 import { UpdateZoneComponent } from './components/update-zone/update-zone.component';
 import { MapComponent } from './components/map/map.component';
 import { TheMapComponent } from './components/the-map/the-map.component';
+import { AutomationDetailsComponent } from './components/automation-details/automation-details.component';
 
 @NgModule({
   declarations: [
@@ -59,7 +60,8 @@ import { TheMapComponent } from './components/the-map/the-map.component';
     AllDevicesDetailsComponent,
     UpdateZoneComponent,
     MapComponent,
-    TheMapComponent
+    TheMapComponent,
+    AutomationDetailsComponent
   ],
   imports: [
     BrowserModule,

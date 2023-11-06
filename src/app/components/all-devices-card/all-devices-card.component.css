@@ -24,16 +24,17 @@
     justify-content: center;
 } */
 
-/* .container{
-    position: absolute;
-    display: flex;
-    justify-content: center;
+ .container{
+    /* position: absolute;
+    display: flex; */
+    width: fit-content;
+    /* justify-content: center;
     background-color: gray;
-    top: 0%;
-    height: 150px;
+    top: 0%; */
+    height: fit-content;
 }
 
-.details{
+/* .details{ 
     padding-top: 80px;
     background-color: gray;
-} */
+}  */
