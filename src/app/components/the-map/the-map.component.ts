@@ -1,3 +1,4 @@
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import * as mapboxgl from 'mapbox-gl';
 
@@ -8,96 +9,60 @@ import * as mapboxgl from 'mapbox-gl';
 })
 export class TheMapComponent implements OnInit {
   map!: mapboxgl.Map;
-  GeoFence:any;
+  page:number =1;
+  page_size:number = 20;
+  GeoFence:any[]=[];
+  constructor(private http:HttpClient){}
   ngOnInit(): void {
+    
+    const params = new HttpParams().set('page', this.page).set('page_size', this.page_size);
+    this.http.get('http://localhost:8081/Zones', { params }).subscribe((data: any) => {
+      this.GeoFence = data;
+    });
     (mapboxgl as typeof mapboxgl).accessToken = 'pk.eyJ1IjoibmVvemEiLCJhIjoiY2xvZnkwOTRiMHh1YTJrcndmam82em42aSJ9.DAxTwxCFRRjQ_BZ7y4ODgw';
      this.map = new mapboxgl.Map({
       container: 'map', // container ID
       style: 'mapbox://styles/mapbox/streets-v12', // style URL
-      center: [-121.353637, 40.584978], // starting position [lng, lat]
+      center: [-71.1860211709, -32.9888719695], // starting position [lng, lat]
       zoom: 9, // starting zoom
       });
       this.map.on('load', () => {
-        this.map.addSource('national-park', {
-        'type': 'geojson',
-        'data': {
-        'type': 'FeatureCollection',
-        'features': [
-        {
-        'type': 'Feature',
-        'geometry': {
-        'type': 'Polygon',
-        'coordinates': [
-        [
-        [-121.353637, 40.584978],
-        [-121.284551, 40.584758],
-        [-121.275349, 40.541646],
-        [-121.246768, 40.541017],
-        [-121.251343, 40.423383],
-        [-121.32687, 40.423768],
-        [-121.360619, 40.43479],
-        [-121.363694, 40.409124],
-        [-121.439713, 40.409197],
-        [-121.439711, 40.423791],
-        [-121.572133, 40.423548],
-        [-121.577415, 40.550766],
-        [-121.539486, 40.558107],
-        [-121.520284, 40.572459],
-        [-121.487219, 40.550822],
-        [-121.446951, 40.56319],
-        [-121.370644, 40.563267],
-        [-121.353637, 40.584978]
-        ]
-        ]
-        },properties:{}
-        },
-        {
-        'type': 'Feature',
-        'geometry': {
-        'type': 'Point',
-        'coordinates': [-121.415061, 40.506229]
-        },properties:{}
-        },
-        {
-        'type': 'Feature',
-        'geometry': {
-        'type': 'Point',
-        'coordinates': [-121.505184, 40.488084]
-        },properties:{}
-        },
-        {
-        'type': 'Feature',
-        'geometry': {
-        'type': 'Point',
-        'coordinates': [-121.354465, 40.488737]
-        },properties:{}
-        }
-        ]
-        }
+        this.GeoFence.forEach(Geo =>{
+          console.log(Geo.id)
+          console.log(Geo)
+          this.map.addSource(Geo.id, {
+            type: 'geojson',
+            data: {
+                "type": "FeatureCollection",
+                "features": [{
+                    "type": "Feature",
+                    "properties": {
+                      radius:Geo.radius
+                    },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [
+                            Geo.lng,
+                            Geo.lat
+                        ]
+                    }
+                }]
+            }
         });
-         
         this.map.addLayer({
-        'id': 'park-boundary',
-        'type': 'fill',
-        'source': 'national-park',
-        'paint': {
-        'fill-color': '#888888',
-        'fill-opacity': 0.4
-        },
-        'filter': ['==', '$type', 'Polygon']
-        });
-         
-        this.map.addLayer({
-        'id': 'park-volcanoes',
+        'id': Geo.id,
         'type': 'circle',
-        'source': 'national-park',
+        'source': Geo.id,
         'paint': {
-        'circle-radius': 6,
-        'circle-color': '#B42222'
+        'circle-radius': Geo.radius,
+        'circle-color':'transparent',
+        'circle-stroke-color':'red',
+        'circle-stroke-width':2
         },
-        'filter': ['==', '$type', 'Point']
+        
         });
         });
+      });
       
   }
   

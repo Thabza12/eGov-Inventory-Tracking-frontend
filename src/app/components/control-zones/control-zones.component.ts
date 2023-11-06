@@ -156,14 +156,14 @@ export class ControlZonesComponent implements OnInit {
 
 
 
-  zoneDetails(name: string) {
+  zoneDetails(name: string,id :string) {
     this.zones.forEach(zone => {
       if (name === zone.name) {
         this._shared.setZoneDetails([zone])
         this._router.navigate(['zone-details'])
         console.log(name)
+        console.log(id)
       }
-
     });
 
   }
