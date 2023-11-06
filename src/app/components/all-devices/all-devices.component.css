@@ -1,16 +1,20 @@
 .container{
     cursor: pointer;
-    width: fit-content;
+    width: 300px;
     height: 70px;
     /* display: flex;
     justify-content: center; */
     position: absolute;
     top: 105px;
-    left: 160px;
+    left: 1px;
+}
+.container-fluid{
+  width: 200;
 }
 
 .row{
     padding: 10px;
+    width: auto;
 }
 body {
     background: #f4f3ef;
@@ -37,9 +41,6 @@ body {
     box-shadow: inset -1px 0px 0px 0px #dddddd;
   }
 
-  #wrapper.toggled #sidebar-wrapper {
-    width: 250px;
-  }
 
   #page-content-wrapper {
     width: 100%;

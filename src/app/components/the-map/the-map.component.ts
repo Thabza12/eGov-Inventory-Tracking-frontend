@@ -24,7 +24,7 @@ export class TheMapComponent implements OnInit {
       container: 'map', // container ID
       style: 'mapbox://styles/mapbox/streets-v12', // style URL
       center: [-71.1860211709, -32.9888719695], // starting position [lng, lat]
-      zoom: 9, // starting zoom
+      zoom: 5, // starting zoom
       });
       this.map.on('load', () => {
         this.GeoFence.forEach(Geo =>{

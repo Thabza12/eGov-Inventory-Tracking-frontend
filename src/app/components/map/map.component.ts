@@ -15,11 +15,14 @@ export class MapComponent implements OnInit {
   lat:any;
   lng:any;
   radius:any;
+  color:any;
   ngOnInit(): void {
     this.id = this._shared.getZonesDetails()[0].id;
       this.lat = this._shared.getZonesDetails()[0].lat;
       this.lng = this._shared.getZonesDetails()[0].lng;
       this.radius = this._shared.getZonesDetails()[0].radius;
+      this.color = this._shared.getZonesDetails()[0].color;
+
     
     (mapboxgl as typeof mapboxgl).accessToken = 'pk.eyJ1IjoibmVvemEiLCJhIjoiY2xvZnkwOTRiMHh1YTJrcndmam82em42aSJ9.DAxTwxCFRRjQ_BZ7y4ODgw'
      this.map = new mapboxgl.Map({
@@ -56,7 +59,7 @@ export class MapComponent implements OnInit {
         'paint': {
         'circle-radius': this.radius,
         'circle-color':'transparent',
-        'circle-stroke-color':'red',
+        'circle-stroke-color':this.color,
         'circle-stroke-width':2
         },
         
