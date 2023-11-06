@@ -56,7 +56,7 @@ export class TheMapComponent implements OnInit {
         'paint': {
         'circle-radius': Geo.radius,
         'circle-color':'transparent',
-        'circle-stroke-color':'red',
+        'circle-stroke-color':Geo.color,
         'circle-stroke-width':2
         },
         
