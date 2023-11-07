@@ -38,6 +38,8 @@ import { UpdateZoneComponent } from './components/update-zone/update-zone.compon
 import { MapComponent } from './components/map/map.component';
 import { TheMapComponent } from './components/the-map/the-map.component';
 import { AutomationDetailsComponent } from './components/automation-details/automation-details.component';
+import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
 
 @NgModule({
   declarations: [
@@ -61,7 +63,9 @@ import { AutomationDetailsComponent } from './components/automation-details/auto
     UpdateZoneComponent,
     MapComponent,
     TheMapComponent,
-    AutomationDetailsComponent
+    AutomationDetailsComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,

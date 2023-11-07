@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DepartmentsComponent } from './components/departments/departments.component';
 import { DevicesComponent } from './components/devices/devices.component';
@@ -16,10 +16,11 @@ import { MapComponent } from './components/map/map.component';
 import { UpdateZoneComponent } from './components/update-zone/update-zone.component';
 import { TheMapComponent } from './components/the-map/the-map.component';
 import { AutomationDetailsComponent } from './components/automation-details/automation-details.component';
+import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
 
 const routes: Routes = [
-  {path: '', component: DashboardComponent},
-  {path: 'dashboard', component: DashboardComponent},
+  {path: 'assets', component: DashboardComponent},
   {path: 'departments', component: DepartmentsComponent},
   {path: 'devices', component: DevicesComponent},
   {path: 'map', component: MapComponent},
@@ -34,7 +35,9 @@ const routes: Routes = [
   {path: 'control-zones', component: ControlZonesComponent},
   {path: 'create-zone', component: CreateZoneComponent},
   {path: 'TheMap',component:TheMapComponent},
-  {path: 'automation-details',component:AutomationDetailsComponent}
+  {path: 'automation-details',component:AutomationDetailsComponent},
+  {path:'',component:LoginComponent},
+  {path:'Register',component:RegisterComponent}
 ];
 
 @NgModule({

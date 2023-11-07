@@ -1,0 +1,128 @@
+<head>
+    <title>login </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link href="/src/app/components/login/login.component.css"/>
+  </head>
+  <body>
+    
+      <div class="row justify-content-center">
+        <div class="col-xl-10">
+          <div class="card border-0">
+            <div class="card-body p-0">
+              <div class="row no-gutters">
+                <div class="col-lg-6">
+                  <div class="p-5">
+                    <div class="mb-5">
+                      <h3 class="h4 font-weight-bold text-theme">Registration</h3>
+                    </div>
+                    <h6 class="h5 mb-0">Welcome</h6>
+                    <p class="text-muted mt-2 mb-5">
+                      Register to access admin panel.
+                    </p>
+                    <form (ngSubmit)="register()" >
+                      <div class="form-group">
+                        <label>Employee Number</label>
+                        <input
+                          [(ngModel)]="form.EmpNumber"
+                          name="EmpNumber"
+                          type="text"
+                          placeholder="Employee Number"
+                          class="form-control"
+                          required
+                          minlength="1"
+                        />
+                      </div>
+                      <div class="form-group">
+                        <label >Name</label>
+                        <input
+                        [(ngModel)]="form.Name"
+                        name="Name"
+                          type="text"
+                          placeholder="Name"
+                          class="form-control"
+                          required
+                          minlength="1"
+                        />
+                      </div>
+                      <div class="form-group">
+                        <label >MiddleName</label>
+                        <input
+                        [(ngModel)]="form.MiddleName"
+                        name="MiddleName"
+                          type="text"
+                          placeholder="Name"
+                          class="form-control"
+                          required
+                          minlength="1"
+                        />
+                      </div>
+                      <div class="form-group">
+                        <label >Surname</label>
+                        <input
+                        [(ngModel)]="form.Surname"
+                        name="Surname"
+                          type="text"
+                          placeholder="Surname"
+                          class="form-control"
+                          required
+                          minlength="1"
+                        />
+                      </div>
+                      <div class="form-group">
+                        <label >Email Address </label>
+                        <input
+                        [(ngModel)]="form.email"
+                        name="email"
+                          type="email"
+                          placeholder="Email"
+                          class="form-control"
+                          required
+                          minlength="1"
+                        />
+                      </div>
+                      <div class="form-group">
+                        <label >Phone Number</label>
+                        <input
+                          [(ngModel)]="form.phoneNumber"
+                          name="phoneNumber"
+                          type="number"
+                          placeholder="Number"
+                          class="form-control"
+                          required
+                          minlength="1"
+                        />
+                      </div>
+                      <div class="form-group mb-5">
+                        <label >Password</label>
+                        <input
+                        [(ngModel)]="form.password"
+                        name="password"
+                          type="password"
+                          required
+                          placeholder="*********"
+                          minlength="1"
+                          class="form-control"
+                        />
+                      </div>
+                      <button type="submit" style="width: 100px;" class="btn btn-theme">Register</button>
+                    </form>
+                  </div>
+                </div>
+                <div class="col-lg-6 d-none d-lg-inline-block">
+                  <img src="https://yt3.ggpht.com/a/AGF-l78IEgLn_WoTJo83oID6zlPNN10Iybapr8eLew=s900-c-k-c0xffffffff-no-rj-mo"style="height: 378px;width: 350px;margin-top: 128px;"  />
+                </div>
+              </div>
+            </div>
+          </div>
+  
+          <p class="text-muted text-center mt-3 mb-0">
+            If you have an account?
+            <a routerLink="/" class="text-primary ml-1">Login</a>
+          </p>
+        </div>
+      </div>
+  </body>
