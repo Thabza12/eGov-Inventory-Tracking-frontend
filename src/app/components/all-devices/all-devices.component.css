@@ -12,6 +12,18 @@
   width: 200;
 }
 
+.button-container{
+  width: fit-content;
+  position: absolute;
+  left: 685px;
+  top: -6px;
+}
+
+.card{
+  margin-top: 30px;
+  width: 1383px;
+}
+
 .row{
     padding: 10px;
     width: auto;

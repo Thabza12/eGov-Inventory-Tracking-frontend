@@ -2,7 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AllDevices } from 'src/app/classes/all-devices';
 import { SharedService } from 'src/app/services/shared.service';
-import { HttpClient,HttpHeaders, HttpParams} from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { flatMap } from 'rxjs';
+import * as pdfMake from 'pdfmake/build/pdfmake';
+import * as pdfFonts from 'pdfmake/build/vfs_fonts';
+
+(pdfMake as any).vfs = pdfFonts.pdfMake.vfs
 
 @Component({
   selector: 'app-all-devices',
@@ -660,33 +665,143 @@ export class AllDevicesComponent implements OnInit {
   totalRecords!: any;
   page: number = 1;
   searchQuery = '';
-  page_size:number =10;
-  TheDevices:any[] =[];
+  page_size: number = 10;
+  TheDevices: any[] = [];
+  view = true
 
 
   constructor(private _shared: SharedService,
-    private _router: Router,private http:HttpClient){}
+    private _router: Router, private http: HttpClient) { }
 
   ngOnInit(): void {
     // this.devices = this._shared.getAllDevices();
     this.loadData();
   }
-  loadData(){
-    const params = new HttpParams().set('page',this.page).set('page_size',this.page_size);
-    this.http.get('http://localhost:8081/AllDevices',{params}).subscribe((data:any)=>{
+  loadData() {
+    const params = new HttpParams().set('page', this.page).set('page_size', this.page_size);
+    this.http.get('http://localhost:8081/AllDevices', { params }).subscribe((data: any) => {
       this.TheDevices = data;
+      console.log(this.TheDevices[1].automations[0].links);
     });
   }
 
-  deviceDetails(id: any){
+  deviceDetails(id: any) {
     this.TheDevices.forEach(device => {
       if (id === device.id) {
         this._shared.setDeviceDetails(device)
         this._router.navigate(['device-management']);
       }
-      
+
     });
 
+  }
+
+  generatePdf() {
+    // const data = [['Name', 'Operating System', 'Description', 'Missing', 'Outdated'],
+    // ['John Doe', 'johndoe@example.com', 'USA'],
+    // ['Jane Smith', 'janesmith@example.com', 'Canada'],
+    // ['Bob Johnson', 'bobjohnson@example.com', 'UK']
+    // ];
+
+    const columns = Object.keys(this.TheDevices[0]);
+    const headers = columns.map((column) => ({text: column, style: 'tableHeader'}));
+
+    const rows = this.TheDevices.flatMap((device) => {
+      const cells = columns.map((column) => ({text: device[column]}));
+
+      const automationRows = device.automations.flatMap((auto: any) => {
+        const autoColumns = Object.keys(auto);
+        const autoCells = autoColumns.map((autoColumn) => ({text: auto[autoColumn]}))
+        const links = auto.links.map((link: any) => Object.keys(link).map((key) => ({text: link[key]})));
+        console.log('auto links:', links);
+        return [...[autoCells], ...links];
+      });
+
+      const labelRows = device.labels.flatMap((label: any) => {
+        const labelColumns = Object.keys(label);
+        const labelCells = labelColumns.map((labelColumn) => ({text: label[labelColumn]}))
+        const links = label.links.map((link: any) => Object.keys(link).map((key) => ({text: link[key]})));
+        console.log('label links:', links);
+        return [...[labelCells], ...links];
+      });
+
+      const zoneRows = device.zones.flatMap((zone: any) => {
+        const zoneColumns = Object.keys(zone);
+        const zoneCells = zoneColumns.map((zoneColumn) => ({text: zone[zoneColumn]}))
+        const links = zone.links.map((link: any) => Object.keys(link).map((key) => ({text: link[key]})));
+        console.log('zone links:', links);
+        return [...[zoneCells], ...links];
+      });
+
+      const detailsRows = device.device_details.hardware[0].data.flatMap((detail: any) => {
+        const detailColumns = Object.keys(detail);
+        const detailCells = detailColumns.map((detailColumn) => ({text: detail[detailColumn]}));
+        // const hardwareRows = this.TheDevices[0].device_details.hardware[0].data.map((data: any) => Object.keys(data).map((key1) => ({text: data[key1]})));
+        // console.log(detailCells)
+        return [...[detailCells]];
+      
+      });
+      // const automationRows = device.automations.map((automation: any) => Object.keys(automation).map((key) => ({text: automation[key]})));
+      // const labelRows = device.labels.map((label: any) => Object.keys(label).map((key1) => ({text: label[key1]})));
+      // const zoneRows = device.zones.map((zone: any) => Object.keys(zone).map((key) => ({text: zone[key]})));
+
+      return [...[cells], ...automationRows, ...labelRows, ...zoneRows, ...detailsRows];
+    });
+
+    
+
+    
+
+    
+
+    
+
+    // const detailRows = this.TheDevices[0].device_details.hardware[0].flatMap((detail: any) => {
+    //   const cells = columns.map((column) => ({text: detail[column]}));
+    //   return [...[cells]]
+    // })
+
+    console.log(rows);
+
+    let docDefinition = {
+      content: [
+        { text: 'Device Data', style: 'header' },
+        { table: { headerRows: 1, widths: headers.map(() => '*'), body: [headers, ...rows] } }
+      ],
+    };
+
+    pdfMake.createPdf(docDefinition).open();
+
+    // let docDefinition = {
+    //   content: [this.TheDevices]
+    // };
+
+    // pdfMake.createPdf(docDefinition).open();
+  }
+
+  missing(name: string) {
+
+  }
+
+  lockScreen(name: string) {
+
+  }
+
+  soundAlarm(name: string) {
+
+  }
+
+  locationActivity(name: string) {
+
+  }
+
+  gridView() {
+    this.view = false;
+
+  }
+
+  cardView() {
+    this.view = true;
   }
 
   filterData() {
