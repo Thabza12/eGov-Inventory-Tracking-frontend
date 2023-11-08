@@ -6,6 +6,7 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { flatMap } from 'rxjs';
 import * as pdfMake from 'pdfmake/build/pdfmake';
 import * as pdfFonts from 'pdfmake/build/vfs_fonts';
+import {ApiService} from 'src/app/services/api.service';
 
 (pdfMake as any).vfs = pdfFonts.pdfMake.vfs
 
@@ -671,7 +672,7 @@ export class AllDevicesComponent implements OnInit {
 
 
   constructor(private _shared: SharedService,
-    private _router: Router, private http: HttpClient) { }
+    private _router: Router, private http: HttpClient,private service:ApiService) { }
 
   ngOnInit(): void {
     // this.devices = this._shared.getAllDevices();
@@ -686,13 +687,24 @@ export class AllDevicesComponent implements OnInit {
   }
 
   deviceDetails(id: any) {
-    this.TheDevices.forEach(device => {
-      if (id === device.id) {
-        this._shared.setDeviceDetails(device)
-        this._router.navigate(['device-management']);
+    this.service.getApiKot(`Device/${id}`).subscribe((data)=>{
+      console.log(data)
+      let mapData = {
+        id:id,
+        lat:data.Location.lat,
+        lng:data.Location.lng
       }
 
+      this._shared.setMapData(mapData);
+      this._router.navigate(['device-management']);
     });
+    // this.TheDevices.forEach(device => {
+    //   if (id === device.id) {
+    //     this._shared.setDeviceDetails(device)
+    //     this._router.navigate(['device-management']);
+    //   }
+
+    // });
 
   }
 

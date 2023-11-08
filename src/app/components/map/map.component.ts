@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit ,Input} from '@angular/core';
 import * as mapboxgl from 'mapbox-gl';
 import { SharedService } from 'src/app/services/shared.service';
 
@@ -14,14 +14,20 @@ export class MapComponent implements OnInit {
   id:any;
   lat:any;
   lng:any;
+  mapData: any;
   radius:any;
   color:any;
   ngOnInit(): void {
-    this.id = this._shared.getZonesDetails()[0].id;
-      this.lat = this._shared.getZonesDetails()[0].lat;
-      this.lng = this._shared.getZonesDetails()[0].lng;
-      this.radius = this._shared.getZonesDetails()[0].radius;
-      this.color = this._shared.getZonesDetails()[0].color;
+    this.mapData = this._shared.getMapData();
+    console.log(this.mapData);
+    this.id = this.mapData.id;
+    this.lng = this.mapData.lng;
+    this.lat = this.mapData.lat;
+    // this.id = this._shared.getZonesDetails()[0].id;
+    //   this.lat = this._shared.getZonesDetails()[0].lat;
+    //   this.lng = this._shared.getZonesDetails()[0].lng;
+    //   this.radius = this._shared.getZonesDetails()[0].radius;
+    //   this.color = this._shared.getZonesDetails()[0].color;
 
     
     (mapboxgl as typeof mapboxgl).accessToken = 'pk.eyJ1IjoibmVvemEiLCJhIjoiY2xvZnkwOTRiMHh1YTJrcndmam82em42aSJ9.DAxTwxCFRRjQ_BZ7y4ODgw'
@@ -57,10 +63,10 @@ export class MapComponent implements OnInit {
         'type': 'circle',
         'source': this.id,
         'paint': {
-        'circle-radius': this.radius,
-        'circle-color':'transparent',
-        'circle-stroke-color':this.color,
-        'circle-stroke-width':2
+        // 'circle-radius': this.radius,
+        'circle-color':'blue',
+        // 'circle-stroke-color':'blue',
+        // 'circle-stroke-width':2
         },
         
         });
