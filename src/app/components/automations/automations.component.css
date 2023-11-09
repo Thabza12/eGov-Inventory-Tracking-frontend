@@ -1,12 +1,12 @@
 .card {
     position: absolute;
-    width: 900px;
+    width: 1200px;
     height: fit-content;
     display: flex;
     justify-content: center;
     left: 5%;
-    height: 400px;
-    top: 100px;
+    height: 600px;
+    top: 0px;
     /* background-color: blue; */
 
     .card-body {

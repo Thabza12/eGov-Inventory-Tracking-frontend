@@ -16,9 +16,15 @@ export class SharedService {
   automation:Automations[]=[];
   departmentDetails: Departments[] = []
   deviceDetails: Devices[] = [];
+  mapData:any[]=[];
 
   constructor() { }
-
+  getMapData(){
+    return this.mapData;
+  }
+  setMapData(data:any){
+    this.mapData = data;
+  }
   getAutomationDetails(){
     return this.automation
   }

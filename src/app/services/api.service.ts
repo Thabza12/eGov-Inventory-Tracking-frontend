@@ -11,8 +11,12 @@ export class ApiService {
   
   apiKey = 'ee2ba49ca14b3c3cecae4b7ab55e75c4';
   private baseUrl = `http://localhost:9898/`
+<<<<<<< HEAD
   private kotUrl ='http://localhost:8081/'
 
+=======
+  private kotUrl ='http://localhost:8081/';
+>>>>>>> 13f238e2a861b95fc1d0540d1654aaeb1082e874
 
   headers(){
     const _headers = new HttpHeaders({
@@ -32,6 +36,10 @@ export class ApiService {
 
   getApi(url: string){
     return this._http.get<any>(this.baseUrl + url);
+  }
+
+  getApiKot(url: string){
+    return this._http.get<any>(this.kotUrl + url);
   }
 
   postApi(url: string, body: any){

@@ -54,9 +54,12 @@ hr {
 
 /* UI - X */
 .movie-ticket {
-    max-width: 650px;
-    margin: 60px auto;
-    
+   
+    position: relative;
+    right: 1%;
+    top: -6%;
+    height: 106%;
+    width: 17%;
 }
 
 /* Head */
@@ -64,6 +67,7 @@ hr {
     position: relative;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
+    height: 106%;
 }
 
 .movie-ticket .ui-item .ui-head img.bg-img {
@@ -81,7 +85,7 @@ hr {
 .movie-ticket .ui-head .ui-trans {
     background: rgba(0, 0, 0, 0.6);
     width: 100%;
-    height: 100%;
+    height: 106%;
     position: absolute;
     top: 0px;
     padding: 25px;
