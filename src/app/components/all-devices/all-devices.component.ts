@@ -669,7 +669,7 @@ export class AllDevicesComponent implements OnInit {
   searchQuery = '';
   page_size: number = 10;
   TheDevices: any[] = [];
-  view = true
+  view = false
 
 
   constructor(private _shared: SharedService,
@@ -697,15 +697,15 @@ export class AllDevicesComponent implements OnInit {
       }
 
       this._shared.setMapData(mapData);
-      this._router.navigate(['device-management']);
+      // this._router.navigate(['device-management']);
     });
-    // this.TheDevices.forEach(device => {
-    //   if (id === device.id) {
-    //     this._shared.setDeviceDetails(device)
-    //     this._router.navigate(['device-management']);
-    //   }
+    this.TheDevices.forEach(device => {
+      if (id === device.id) {
+        this._shared.setDeviceDetails(device)
+        this._router.navigate(['device-management']);
+      }
 
-    // });
+    });
 
   }
 

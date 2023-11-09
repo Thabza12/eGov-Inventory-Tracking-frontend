@@ -1,6 +1,6 @@
 .container{
     cursor: pointer;
-    width: fit-content;
+    /* width: fit-content; */
     height: fit-content;
     /* display: flex;
     justify-content: center; */

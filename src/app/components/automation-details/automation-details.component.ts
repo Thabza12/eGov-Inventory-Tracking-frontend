@@ -1,9 +1,14 @@
-import { Component,OnInit } from '@angular/core';
+import { Component,Inject,OnInit } from '@angular/core';
+import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { AutomationActions } from 'src/app/classes/automation-actions';
 import { AutomationDevices } from 'src/app/classes/automation-devices';
 import { AutomationEvents } from 'src/app/classes/automation-events';
 import { Automations } from 'src/app/classes/automations';
 import { SharedService } from 'src/app/services/shared.service';
+
+export interface DailogData {
+  name: string;
+}
 
 @Component({
   selector: 'app-automation-details',
@@ -17,7 +22,13 @@ export class AutomationDetailsComponent implements OnInit{
   automation :Automations[]=[];
   totalRecords!: any;
   page: number = 1;
-  constructor(private _shared:SharedService){}
+
+  constructor(private _shared:SharedService,
+    public dialog: MatDialog,
+    public dialogRef: MatDialogRef<AutomationDetailsComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: DailogData){}
+
+
   ngOnInit(): void {
     this.automation = this._shared.getAutomationDetails();
     this.automationDevice(this._shared.getAutomationDetails());

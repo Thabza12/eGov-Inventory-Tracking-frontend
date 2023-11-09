@@ -1,7 +1,7 @@
 #map{
-    /* height: 300px;
-    width: 100%; */
-    position: relative;
+    height: 300px;
+    width: 100%;
+    /* position: relative; */
     left: 0%;
     top: 10%;
     opacity: 0.5;

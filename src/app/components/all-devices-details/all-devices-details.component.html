@@ -1,175 +1,91 @@
-<<<<<<< HEAD
+
 <div class="movie-ticket">
-    <div class="container-fluid" style="padding-top: 45px;">
-        <div class="ui-item">
-            <div class="ui-head" style="left: 0%; right: 0%; width: 100%; height: 700px;">
-                <!-- <img
-              src="https://htmlcolorcodes.com/assets/images/colors/dark-purple-color-solid-background-1920x1080.png"
-              alt
-              class="img-responsive bg-img"
-              style="width: 100%"
-            /> -->
-
-                <div class="ui-trans clearfix">
-                    <img src="https://media.licdn.com/dms/image/C4D0BAQGyXV-cMgPn-w/company-logo_200_200/0/1657275405833/purple_wire_pty_ltd_logo?e=2147483647&v=beta&t=ifhz1PoMMQGGlcI7cixmxHVdqbfyhltnSzslezBFB10"
-                        alt class="img-responsive" />
-
-                    <div class="ui-details clearfix">
-                        <h2>{{details.name}}</h2>
-                        <div class="card"
-                            style="position: relative; top: 30px; height: fit-content; width: 300px; background-color: rgba(112, 112, 112, 0); color: white; border: transparent;">
-                            <div class="card-body">
-                                <mat-list>
-                                    <!-- <mat-list-item>OS</mat-list-item> -->
-                                    <h3>OS</h3>
-                                    <h5 style="position: relative; right: 80px;">{{details.os_details.os}}</h5>
-                                    <mat-divider></mat-divider>
-                                    <!-- <mat-list-item>Description</mat-list-item> -->
-                                    <h3>Description</h3>
-                                    <h5 style="position: relative; right: 80px;">{{ details.description }}</h5>
-                                    <mat-divider></mat-divider>
-                                    <!-- <mat-list-item>Missing</mat-list-item> -->
-                                    <h3>Missing</h3>
-                                    <h5 style="position: relative; right: 80px;">{{details.missing}}</h5>
-                                    <mat-divider></mat-divider>
-                                    <!-- <mat-list-item>Client Outdated</mat-list-item> -->
-                                    <h3>Client Outdated</h3>
-                                    <h5 style="position: relative; right: 80px;">{{details.client_outdated}}</h5>
-                                    <mat-divider></mat-divider>
-                                    <!-- <mat-list-item>Client Outdated</mat-list-item> -->
-                                    <h3>Type</h3>
-                                    <h5 style="position: relative; right: 80px;">{{details.type}}</h5>
-                                    <mat-divider></mat-divider>
-                                    <!-- <mat-list-item>Client Outdated</mat-list-item> -->
-                                    <h3>User</h3>
-                                    <h5 style="position: relative; right: 80px;">{{details.user.email}}</h5>
-                                </mat-list>
-
-                            </div>
-                            <!-- <h4 class="card-text">{{ device.os }}</h4> -->
-                            <!-- <h5 class="card-text"></h5> -->
-
-
-                            <!-- <h4 class="card-text">{{ device.missing }}</h4> -->
-                            <!-- <h2 class="card-title">{{ device.logged_user }}</h2> -->
-                        </div>
-=======
-
-  <link
-    href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"
-    rel="stylesheet"
-  />
-  <div class="movie-ticket">
     <div class="row">
-      <div class="col">
-        <div class="container-fluid" style="padding-top: 45px">
-          <div class="ui-item">
-            <div
-              class="ui-head"
-              style="left: 0%; right: 0%; width: 100%; height: 700px"
-            >
-              <!-- <img
+        <div class="col">
+            <div class="container-fluid" style="padding-top: 45px">
+                <div class="ui-item">
+                    <div class="ui-head" style="left: 0%; right: 0%; width: 100%; height: 700px">
+                        <!-- <img
                   src="https://htmlcolorcodes.com/assets/images/colors/dark-purple-color-solid-background-1920x1080.png"
                   alt
                   class="img-responsive bg-img"
                   style="width: 100%"
                 /> -->
-    
-              <div class="ui-trans clearfix">
-                <img
-                  src="https://media.licdn.com/dms/image/C4D0BAQGyXV-cMgPn-w/company-logo_200_200/0/1657275405833/purple_wire_pty_ltd_logo?e=2147483647&v=beta&t=ifhz1PoMMQGGlcI7cixmxHVdqbfyhltnSzslezBFB10"
-                  alt
-                  class="img-responsive"
-                />
-    
-                <div class="ui-details clearfix">
-                  <h2>{{ details.name }}</h2>
-                  <div
-                    class="card"
-                    style="
-                      position: absolute;
-                      top: 220px;
-                      left: 16px;
-                      height: fit-content;
-                      width: 300px;
-                      background-color: rgba(112, 112, 112, 0);
-                      color: white;
-                      border: transparent;
-                    "
-                  >
-                    <div class="card-body">
-                      <mat-list>
-                        <!-- <mat-list-item>OS</mat-list-item> -->
-                        <button href="#" class="btn btn-outline-light">
-                          <i></i>Set as missing
-                        </button>
-                        <mat-divider></mat-divider>
-                        <!-- <mat-list-item>Description</mat-list-item> -->
-                        <button href="#" class="btn btn-outline-light">
-                          <i></i>Lock screen
-                        </button>
-                        <mat-divider></mat-divider>
-                        <!-- <mat-list-item>Missing</mat-list-item> -->
-                        <button href="#" class="btn btn-outline-light">
-                          <i></i>Sound Alarm
-                        </button>
-                        <mat-divider></mat-divider>
-                        <!-- <mat-list-item>Client Outdated</mat-list-item> -->
-                        <button href="#" class="btn btn-outline-light">
-                          <i></i>Location Activity
-                        </button>
-                        <mat-divider></mat-divider>
-                        <!-- <mat-list-item>Client Outdated</mat-list-item> -->
-                        <button href="#" class="btn btn-outline-light">
-                          <i></i>Hardware
-                        </button>
-                        <mat-divider></mat-divider>
-                        <!-- <mat-list-item>Client Outdated</mat-list-item> -->
-                        <button href="#" class="btn btn-outline-light">
-                          <i></i>Device Details
-                        </button>
-                      </mat-list>
->>>>>>> 13f238e2a861b95fc1d0540d1654aaeb1082e874
-                    </div>
-                    <!-- <h4 class="card-text">{{ device.os }}</h4> -->
-                    <!-- <h5 class="card-text"></h5> -->
-    
-                    <!-- <h4 class="card-text">{{ device.missing }}</h4> -->
-                    <!-- <h2 class="card-title">{{ device.logged_user }}</h2> -->
-                  </div>
-                </div>
-<<<<<<< HEAD
-            </div>
 
-            <div class="ui-review">
-                <!-- <h3>Actions/Device Control</h3> -->
-                <!-- <p>
-                
-            </p> -->
-                <a href="#" class="ui-btn bg-red"><i></i>Set as missing</a>
-                <a href="#" class="ui-btn bg-green"><i></i>Lock screen</a>
-                <a href="#" class="ui-btn bg-green"><i></i>Sound Alarm</a>
-                <a href="#" class="ui-btn bg-info"><i></i>Location Activity</a>
-=======
-              </div>
->>>>>>> 13f238e2a861b95fc1d0540d1654aaeb1082e874
-            </div>
-    
-            <!-- <div class="ui-review"> -->
-            <!-- <h3>Actions/Device Control</h3> -->
-            <!-- <p>
+                        <div class="ui-trans clearfix">
+                            <img src="https://media.licdn.com/dms/image/C4D0BAQGyXV-cMgPn-w/company-logo_200_200/0/1657275405833/purple_wire_pty_ltd_logo?e=2147483647&v=beta&t=ifhz1PoMMQGGlcI7cixmxHVdqbfyhltnSzslezBFB10"
+                                alt class="img-responsive" />
+
+                            <div class="card" style="position: absolute; left: 16px; top: 240px; width: fit-content; background-color: rgba(112, 112, 112, 0); color: white; border: transparent;">
+                                <div class="card-body">
+                                    <mat-list>
+                                        <mat-list-item>Device Name</mat-list-item>
+                                        <h5>{{details.name}}</h5>
+                                        <mat-divider></mat-divider>
+                                        <mat-list-item>User</mat-list-item>
+                                        <h5>{{details.user.email}}</h5>
+                                        <mat-divider></mat-divider>
+                                        <mat-list-item>Type</mat-list-item>
+                                        <h5>{{details.type}}</h5>
+                                        <mat-divider></mat-divider>
+                                        <mat-list-item>Client Outdated</mat-list-item>
+                                        <h5>{{details.client_outdated}}</h5>
+                                        <mat-divider></mat-divider>
+                                    </mat-list>
+                                </div>
+                            </div>
+
+                            <!-- <div class="ui-details clearfix"> -->
+                            <div class="card" style="position: absolute; bottom: 0%; left: 16px; height: fit-content; width: fit-content; background-color: rgba(112, 112, 112, 0); color: white; border: transparent;">
+                                <div class="card-body">
+                                    <mat-list>
+                                        <!-- <mat-list-item>OS</mat-list-item> -->
+                                        <button href="#" class="btn btn-outline-light">
+                                            Set as missing
+                                        </button>
+                                        <mat-divider></mat-divider>
+                                        <!-- <mat-list-item>Description</mat-list-item> -->
+                                        <button href="#" class="btn btn-outline-light">
+                                            Lock screen
+                                        </button>
+                                        <mat-divider></mat-divider>
+                                        <!-- <mat-list-item>Missing</mat-list-item> -->
+                                        <button href="#" class="btn btn-outline-light">
+                                            Sound Alarm
+                                        </button>
+                                        <mat-divider></mat-divider>
+                                        <!-- <mat-list-item>Client Outdated</mat-list-item> -->
+                                        <button href="#" class="btn btn-outline-light">
+                                            Location Activity
+                                        </button>
+                                        <mat-divider></mat-divider>
+                                        <!-- <mat-list-item>Client Outdated</mat-list-item> -->
+                                        <button href="#" class="btn btn-outline-light">
+                                            Hardware
+                                        </button>
+                                    </mat-list>
+                                </div>
+                                <!-- <h4 class="card-text">{{ device.os }}</h4> -->
+                                <!-- <h5 class="card-text"></h5> -->
+
+                                <!-- <h4 class="card-text">{{ device.missing }}</h4> -->
+                                <!-- <h2 class="card-title">{{ device.logged_user }}</h2> -->
+                            </div>
+                            <!-- </div> -->
+                        </div>
+                    </div>
+
+                    <!-- <div class="ui-review"> -->
+                    <!-- <h3>Actions/Device Control</h3> -->
+                    <!-- <p>
                     
                 </p> -->
-          </div>
+                </div>
+            </div>
         </div>
-      </div>
-      <!-- <div class="col" style="height: 300px; width: 300px; position: relative; left: 50%;">
-          <app-map></app-map>
-      </div> -->
+        <div class="col">
+            <app-map></app-map>
+        </div>
+        
     </div>
-<<<<<<< HEAD
 </div>
-=======
-  </div>
-
->>>>>>> 13f238e2a861b95fc1d0540d1654aaeb1082e874

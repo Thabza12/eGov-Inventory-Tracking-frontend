@@ -8,6 +8,8 @@ import { ApiService } from 'src/app/services/api.service';
 import { SharedService } from 'src/app/services/shared.service';
 import { HttpClient,HttpHeaders, HttpParams} from '@angular/common/http';
 import { AutomationDevices } from 'src/app/classes/automation-devices';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { AutomationDetailsComponent } from '../automation-details/automation-details.component';
 
 @Component({
   selector: 'app-automations',
@@ -254,7 +256,10 @@ export class AutomationsComponent implements OnInit {
   totalRecords!: any;
   page: number = 1;
   page_size:number = 10;
-  constructor(private _router: Router,private http:HttpClient,private _shared:SharedService) { }
+  constructor(private _router: Router,
+    private http:HttpClient,
+    private _shared:SharedService,
+    public dialog: MatDialog,) { }
 
 
   ngOnInit(): void {
@@ -275,9 +280,24 @@ export class AutomationsComponent implements OnInit {
     this.automations.forEach(Auto => {
       if (name === Auto.name) {
         this._shared.setAutomationDetails([Auto])
-        this._router.navigate(['automation-details'])
+        // this._router.navigate(['automation-details'])
         // console.log(name)
         console.log(Auto)
+
+        const dialogConfig = new MatDialogConfig();
+
+        dialogConfig.autoFocus = false;
+
+        dialogConfig.data = {
+          name: name
+        }
+
+        const dialogRef = this.dialog.open(AutomationDetailsComponent, dialogConfig);
+
+        dialogRef.afterClosed().subscribe(data =>{
+          console.log("dialog closed", data);
+        })
+
       }
     });
   }

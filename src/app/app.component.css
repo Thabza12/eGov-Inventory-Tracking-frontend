@@ -26,9 +26,10 @@
   #page-content-wrapper {
     width: 100%;
     background: #f4f3ef;
-    /* margin-top: 85px; */
+    margin-top: 85px;
     position: absolute;
     padding: 15px;
+    height: fit-content;
   }
 
   #wrapper.toggled #page-content-wrapper {
@@ -151,3 +152,11 @@
     font-size: 14px;
     float: left;
   }
+
+.container-fluid{
+  height: 850px;
+}
+
+/* .col-lg-12{
+  height: fit-content;
+} */

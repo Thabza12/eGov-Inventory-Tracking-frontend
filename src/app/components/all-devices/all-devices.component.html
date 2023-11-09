@@ -67,11 +67,11 @@
             <td>{{device.missing}}</td>
             <td>{{device.client_outdated}}</td>
             <td>
-              <button (click)="deviceDetails(device.name)" style="height: 35px;" type="button"
+              <button (click)="deviceDetails(device.id)" style="height: 35px;" type="button"
                 class="btn btn-outline-info me-2">
                 <mat-icon aria-label="info icon" fontIcon="info"></mat-icon>
               </button>
-              <button (click)="missing(device.name)" style="height: 35px;" type="button"
+              <!-- <button (click)="missing(device.name)" style="height: 35px;" type="button"
                 class="btn btn-outline-primary me-2">
                 <mat-icon aria-label="clear icon" fontIcon="clear"></mat-icon>
               </button>
@@ -86,7 +86,7 @@
               <button (click)="locationActivity(device.name)" style="height: 35px;" type="button"
                 class="btn btn-outline-secondary me-2">
                 <mat-icon aria-label="location_on icon" fontIcon="location_on"></mat-icon>
-              </button>
+              </button> -->
             </td>
           </tr>
         </tbody>
