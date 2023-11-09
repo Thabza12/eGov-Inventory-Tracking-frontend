@@ -23,11 +23,11 @@
                     <p class="text-muted mt-2 mb-5">
                       Register to access admin panel.
                     </p>
-                    <form (ngSubmit)="register()" >
+                    <form [formGroup]="form" (ngSubmit)="register(form)" >
                       <div class="form-group">
                         <label>Employee Number</label>
                         <input
-                          [(ngModel)]="form.EmpNumber"
+                          formControlName="EmpNumber"
                           name="EmpNumber"
                           type="text"
                           placeholder="Employee Number"
@@ -39,7 +39,7 @@
                       <div class="form-group">
                         <label >Name</label>
                         <input
-                        [(ngModel)]="form.Name"
+                        formControlName="Name"
                         name="Name"
                           type="text"
                           placeholder="Name"
@@ -51,7 +51,7 @@
                       <div class="form-group">
                         <label >MiddleName</label>
                         <input
-                        [(ngModel)]="form.MiddleName"
+                        formControlName="MiddleName"
                         name="MiddleName"
                           type="text"
                           placeholder="Name"
@@ -63,7 +63,7 @@
                       <div class="form-group">
                         <label >Surname</label>
                         <input
-                        [(ngModel)]="form.Surname"
+                        formControlName="Surname"
                         name="Surname"
                           type="text"
                           placeholder="Surname"
@@ -75,10 +75,10 @@
                       <div class="form-group">
                         <label >Email Address </label>
                         <input
-                        [(ngModel)]="form.email"
+                        formControlName="email"
                         name="email"
                           type="email"
-                          placeholder="Email"
+                          placeholder="email"
                           class="form-control"
                           required
                           minlength="1"
@@ -87,7 +87,7 @@
                       <div class="form-group">
                         <label >Phone Number</label>
                         <input
-                          [(ngModel)]="form.phoneNumber"
+                        formControlName="phoneNumber"
                           name="phoneNumber"
                           type="number"
                           placeholder="Number"
@@ -99,7 +99,7 @@
                       <div class="form-group mb-5">
                         <label >Password</label>
                         <input
-                        [(ngModel)]="form.password"
+                        formControlName="password"
                         name="password"
                           type="password"
                           required

@@ -1,121 +1,68 @@
-<head>
-    <meta charset="utf-8" />
-
-    <title>Sidebar left menu </title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link
-      href="https://netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
-    <link href="/src/app/components/the-map/the-map.component.css" rel="stylesheet"/>
-  </head>
-  <body>
-    <link
-      href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"
-      rel="stylesheet"
-    />
-    <div id="wrapper" class="wrapper-content">
-      <div id="sidebar-wrapper">
-        <ul class="sidebar-nav">
-            <li>
-                <a routerLink="/">Assets</a>
-              </li>
-              <li>
-                <a href="all-devices">Devices</a>
-              </li>
-              <li>
-                <a href="departments">Departments</a>
-              </li>
-              <li>
-                <a href="automations">Automations</a>
-              </li>
-              <li >
-                <a href="control-zones">Control Zones</a>
-              </li>
-              <li >
-                <a href="TheMap">Map</a>
-              </li>
-              
-              <li>
-                <a href="#">Logout</a>
-              </li>
-        </ul>
-      </div>
-      <div id="page-content-wrapper">
-        <div class="container-fluid">
-          <div class="row">
-            <div class="col-lg-12">
-              <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" />
-    <div class="movie-ticket">
-        <div class="container-fluid" style="padding-top: 45px;">
-            <div class="ui-item">
-                <div class="ui-head" style="left: 0%; right: 0%; width: 100%; height: 600px;">
-                    <!-- <img
+<div class="movie-ticket">
+  <div class="container-fluid" style="padding-top: 45px;">
+    <div class="ui-item">
+      <div class="ui-head" style="left: 0%; right: 0%; width: 100%; height: 600px;">
+        <!-- <img
               src="https://htmlcolorcodes.com/assets/images/colors/dark-purple-color-solid-background-1920x1080.png"
               alt
               class="img-responsive bg-img"
               style="width: 100%"
             /> -->
 
-                    <div class="ui-trans clearfix">
-                        <img src="https://media.licdn.com/dms/image/C4D0BAQGyXV-cMgPn-w/company-logo_200_200/0/1657275405833/purple_wire_pty_ltd_logo?e=2147483647&v=beta&t=ifhz1PoMMQGGlcI7cixmxHVdqbfyhltnSzslezBFB10"
-                            alt class="img-responsive" />
+        <div class="ui-trans clearfix">
+          <img
+            src="https://media.licdn.com/dms/image/C4D0BAQGyXV-cMgPn-w/company-logo_200_200/0/1657275405833/purple_wire_pty_ltd_logo?e=2147483647&v=beta&t=ifhz1PoMMQGGlcI7cixmxHVdqbfyhltnSzslezBFB10"
+            alt class="img-responsive" />
 
-                        <div class="ui-details clearfix">
-                            <h2>{{details.name}}</h2>
-                            <div class="me-4 mt-3">
-                                <h4><span>OS</span>:</h4>
-                                <h5>{{details.os}}</h5>
+          <div class="ui-details clearfix">
+            <h2>{{details.name}}</h2>
+            <div class="me-4 mt-3">
+              <h4><span>OS</span>:</h4>
+              <h5>{{details.os}}</h5>
 
-                            </div>
-                            <div class="me-4 mt-3">
-                                <h4><span>Online</span>:</h4>
-                                <h5>{{details.online}}</h5>
-                            </div>
-                            <div class="me-4 mt-3">
-                                <h4><span>Missing</span>:</h4>
-                                <h5>{{details.missing}}</h5>
-                            </div>
-                            <div class="me-4 mt-3">
-                                <h4><span>Description</span>:</h4>
-                                <h5>{{details.description}}</h5>
-                            </div>
-                            <div class="me-4 mt-3">
-                                <h4><span>State</span>:</h4>
-                                <h5>{{details.state}}</h5>
-                            </div>
-                            <div class="me-4 mt-3">
-                                <h4><span>Client Outdated</span>:</h4>
-                                <h5>{{details.client_outdated}}</h5>
-                            </div>
-                            <div class="me-2 mt-5">
-                                <h4><span>Last Checked In</span>:</h4>
-                                <h5>{{details.last_checked_in}}</h5>
-                            </div>
-                            <div class="me-4 mt-3">
-                                <h4><span>Location</span>:</h4>
-                                <h5>{{details.location.lat}}, {{details.location.lon}}</h5>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="ui-review">
-                    <!-- <h3>Actions/Device Control</h3> -->
-                    <!-- <p>
-                
-            </p> -->
-                    <a href="#" class="ui-btn bg-red"><i></i>Set as missing</a>
-                    <a href="#" class="ui-btn bg-green"><i></i>Lock screen</a>
-                    <a href="#" class="ui-btn bg-green"><i></i>Sound Alarm</a>
-                    <a href="#" class="ui-btn bg-info"><i></i>Location Activity</a>
-                </div>
             </div>
-        </div>
-    </div>
+            <div class="me-4 mt-3">
+              <h4><span>Online</span>:</h4>
+              <h5>{{details.online}}</h5>
+            </div>
+            <div class="me-4 mt-3">
+              <h4><span>Missing</span>:</h4>
+              <h5>{{details.missing}}</h5>
+            </div>
+            <div class="me-4 mt-3">
+              <h4><span>Description</span>:</h4>
+              <h5>{{details.description}}</h5>
+            </div>
+            <div class="me-4 mt-3">
+              <h4><span>State</span>:</h4>
+              <h5>{{details.state}}</h5>
+            </div>
+            <div class="me-4 mt-3">
+              <h4><span>Client Outdated</span>:</h4>
+              <h5>{{details.client_outdated}}</h5>
+            </div>
+            <div class="me-2 mt-5">
+              <h4><span>Last Checked In</span>:</h4>
+              <h5>{{details.last_checked_in}}</h5>
+            </div>
+            <div class="me-4 mt-3">
+              <h4><span>Location</span>:</h4>
+              <h5>{{details.location.lat}}, {{details.location.lon}}</h5>
             </div>
           </div>
         </div>
       </div>
+
+      <div class="ui-review">
+        <!-- <h3>Actions/Device Control</h3> -->
+        <!-- <p>
+                
+            </p> -->
+        <a href="#" class="ui-btn bg-red"><i></i>Set as missing</a>
+        <a href="#" class="ui-btn bg-green"><i></i>Lock screen</a>
+        <a href="#" class="ui-btn bg-green"><i></i>Sound Alarm</a>
+        <a href="#" class="ui-btn bg-info"><i></i>Location Activity</a>
+      </div>
     </div>
-  </body>
+  </div>
+</div>

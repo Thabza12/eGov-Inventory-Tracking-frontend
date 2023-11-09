@@ -18,26 +18,30 @@ import { TheMapComponent } from './components/the-map/the-map.component';
 import { AutomationDetailsComponent } from './components/automation-details/automation-details.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
+import { isAuthenticatedGuard } from './auth-gaurd/is-authenticated.guard';
+// import { SideNavComponent } from './components/side-nav/side-nav.component';
 
 const routes: Routes = [
-  {path: 'assets', component: DashboardComponent},
-  {path: 'departments', component: DepartmentsComponent},
-  {path: 'devices', component: DevicesComponent},
-  {path: 'map', component: MapComponent},
-  {path: 'update-zone', component: UpdateZoneComponent},
-  {path: 'device-management', component: AllDevicesDetailsComponent},
-  {path: 'all-devices', component: AllDevicesComponent},
-  {path: 'create-automation', component: CreateAutomationComponent},
-  {path: 'department-details', component: DepartmentDetailsComponent},
-  {path: 'device-details', component: DeviceDetailsComponent},
-  {path: 'zone-details', component: ZoneDetailsComponent},
-  {path: 'automations', component: AutomationsComponent},
-  {path: 'control-zones', component: ControlZonesComponent},
-  {path: 'create-zone', component: CreateZoneComponent},
-  {path: 'TheMap',component:TheMapComponent},
-  {path: 'automation-details',component:AutomationDetailsComponent},
-  {path:'',component:LoginComponent},
-  {path:'Register',component:RegisterComponent}
+  {path: 'assets', component: DashboardComponent, canActivate: [isAuthenticatedGuard]},
+  // {path: 'side-nav', component: SideNavComponent},
+  {path: 'departments', component: DepartmentsComponent, canActivate: [isAuthenticatedGuard]},
+  {path: 'devices', component: DevicesComponent, canActivate: [isAuthenticatedGuard]},
+  {path: 'map', component: MapComponent, canActivate: [isAuthenticatedGuard]},
+  {path: 'update-zone', component: UpdateZoneComponent, canActivate: [isAuthenticatedGuard]},
+  {path: 'device-management', component: AllDevicesDetailsComponent, canActivate: [isAuthenticatedGuard]},
+  {path: 'all-devices', component: AllDevicesComponent, canActivate: [isAuthenticatedGuard]},
+  {path: 'create-automation', component: CreateAutomationComponent, canActivate: [isAuthenticatedGuard]},
+  {path: 'department-details', component: DepartmentDetailsComponent, canActivate: [isAuthenticatedGuard]},
+  {path: 'device-details', component: DeviceDetailsComponent, canActivate: [isAuthenticatedGuard]},
+  {path: 'zone-details', component: ZoneDetailsComponent, canActivate: [isAuthenticatedGuard]},
+  {path: 'automations', component: AutomationsComponent, canActivate: [isAuthenticatedGuard]},
+  {path: 'control-zones', component: ControlZonesComponent, canActivate: [isAuthenticatedGuard]},
+  {path: 'create-zone', component: CreateZoneComponent, canActivate: [isAuthenticatedGuard]},
+  {path: 'map',component:TheMapComponent, canActivate: [isAuthenticatedGuard]},
+  {path: 'automation-details',component:AutomationDetailsComponent, canActivate: [isAuthenticatedGuard]},
+  {path: '', redirectTo: '/login', pathMatch: 'full'},
+  {path: 'login', component:LoginComponent},
+  {path: 'register', component:RegisterComponent}
 ];
 
 @NgModule({

@@ -23,12 +23,13 @@
                   <p class="text-muted mt-2 mb-5">
                     Enter your employee number and password to access admin panel.
                   </p>
-                  <form (ngSubmit)="login()">
+                  <form [formGroup]="form" (ngSubmit)="onSubmit()">
                     <div class="form-group">
-                      <label for="InputEmail1">Employee Number</label>
+                      <label for="empNumber">Employee Number</label>
                       <input
                         type="text"
-                        [(ngModel)]="empNumber"
+                        formControlName="empNumber"
+                        name = "empNumber"
                         placeholder="Employee Number"
                         class="form-control"
                         required
@@ -36,10 +37,11 @@
                       />
                     </div>
                     <div class="form-group mb-5">
-                      <label for="inputPassword1">Password</label>
+                      <label for="Empassword">Password</label>
                       <input
                         type="password"
-                        [(ngModel)]="Empassword"
+                        formControlName="Empassword"
+                        name="Empassword"
                         required
                         minlength="1"
                         class="form-control"

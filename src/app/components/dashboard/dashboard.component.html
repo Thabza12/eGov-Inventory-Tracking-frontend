@@ -1,144 +1,65 @@
-<!-- <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
+<div class="container">
+  <section class="section mb-5">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-8 col-xl-7 text-center desc">
+          <h2 class="h1 mb-3"></h2>
+          <li style="top: 100px"></li>
 
-    <title>Sidebar left menu </title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link
-      href="https://netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
-    
-  </head>
-  <body>
-    <link
-    href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
-    rel="stylesheet"
-  />
-    <link
-      href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"
-      rel="stylesheet"
-    />
-    <div id="wrapper" class="wrapper-content">
-      <div id="sidebar-wrapper">
-        <ul class="sidebar-nav">
-          <li>
-            <a routerLink="/">Assets</a>
-          </li>
-          <li>
-            <a href="all-devices">Devices</a>
-          </li>
-          <li>
-            <a href="departments">Departments</a>
-          </li>
-          <li>
-            <a href="automations">Automations</a>
-          </li>
-          <li >
-            <a href="control-zones">Control Zones</a>
-          </li>
-          <li >
-            <a href="TheMap">Map</a>
-          </li>
-          
-          <li>
-            <a href="#">Logout</a>
-          </li>
-        </ul>
-      </div> -->
-<!-- <div id="page-content-wrapper">
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-lg-12"> -->
-        <div class="container">
-          <section class="section mb-5">
-            <div class="container">
-              <div class="row justify-content-center">
-                <div class="col-lg-8 col-xl-7 text-center desc">
-                  <h2 class="h1 mb-3"></h2>
-                  <li style="top: 100px"></li>
-
-                  <!-- <p class="mx-lg-8">All Departments Admin DashBoard</p> -->
-                </div>
-              </div>
-            </div>
-          </section>
-          <section class="section pt-0">
-            <div class="container">
-              <div class="row gy-4 justify-content-center">
-                <div class="col-sm-6 col-md-6 col-lg-4" (click)="department()">
-                  <div class="card">
-                    <div class="card-body d-flex">
-                      <img
-                        src="https://southafrica.co.za/images/gauteng-logo-786x613.jpg"
-                        alt="Image Description"
-                        class="icon-lg bg-primary rounded-3 text-white"
-                      />
-                      <div class="ps-3 col">
-                        <h5 class="h6 mb-2">
-                          <a
-                            routerLink="/all-devices"
-                            class="stretched-link text-reset"
-                            >Portable Device</a
-                          >
-                        </h5>
-                        <p class="m-0" href="all-devices">Laptops Tracking</p>
-                        <p class="m-0">.</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-sm-6 col-md-6 col-lg-4">
-                  <div class="card">
-                    <div class="card-body d-flex">
-                      <img
-                        src="https://southafrica.co.za/images/gauteng-logo-786x613.jpg"
-                        alt="Image Description"
-                        class="icon-lg bg-primary rounded-3 text-white"
-                      />
-                      <div class="ps-3 col">
-                        <h5 class="h6 mb-2">
-                          <a class="stretched-link text-reset"
-                            >Furniture tracking</a
-                          >
-                        </h5>
-                        <p class="m-0">Tables,Chairs,whiteboard</p>
-                        <p class="m-0">Water features</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-sm-6 col-md-6 col-lg-4">
-                  <div class="card">
-                    <div class="card-body d-flex">
-                      <img
-                        src="https://southafrica.co.za/images/gauteng-logo-786x613.jpg"
-                        alt="Image Description"
-                        class="icon-lg bg-primary rounded-3 text-white"
-                      />
-                      <div class="ps-3 col">
-                        <h5 class="h6 mb-2">
-                          <a class="stretched-link text-reset">Fixed Device</a>
-                        </h5>
-                        <p class="m-0">Desktops,printer</p>
-                        <p class="m-0">monitors and servers</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
+          <!-- <p class="mx-lg-8">All Departments Admin DashBoard</p> -->
         </div>
-        <!-- </div>
+      </div>
+    </div>
+  </section>
+  <section class="section pt-0">
+    <div class="container">
+      <div class="row gy-4 justify-content-center">
+        <div class="col-sm-6 col-md-6 col-lg-4" (click)="department()">
+          <div class="card">
+            <div class="card-body d-flex">
+              <img src="https://southafrica.co.za/images/gauteng-logo-786x613.jpg" alt="Image Description"
+                class="icon-lg bg-primary rounded-3 text-white" />
+              <div class="ps-3 col">
+                <h5 class="h6 mb-2">
+                  <a routerLink="/all-devices" class="stretched-link text-reset">Portable Device</a>
+                </h5>
+                <p class="m-0" href="all-devices">Laptops Tracking</p>
+                <p class="m-0">.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-6 col-lg-4">
+          <div class="card">
+            <div class="card-body d-flex">
+              <img src="https://southafrica.co.za/images/gauteng-logo-786x613.jpg" alt="Image Description"
+                class="icon-lg bg-primary rounded-3 text-white" />
+              <div class="ps-3 col">
+                <h5 class="h6 mb-2">
+                  <a class="stretched-link text-reset">Furniture tracking</a>
+                </h5>
+                <p class="m-0">Tables,Chairs,whiteboard</p>
+                <p class="m-0">Water features</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-6 col-lg-4">
+          <div class="card">
+            <div class="card-body d-flex">
+              <img src="https://southafrica.co.za/images/gauteng-logo-786x613.jpg" alt="Image Description"
+                class="icon-lg bg-primary rounded-3 text-white" />
+              <div class="ps-3 col">
+                <h5 class="h6 mb-2">
+                  <a class="stretched-link text-reset">Fixed Device</a>
+                </h5>
+                <p class="m-0">Desktops,printer</p>
+                <p class="m-0">monitors and servers</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </body>
-</html> -->
-      <!-- </div>
-    </div>
-  </div>
-</div> -->
+  </section>
+</div>

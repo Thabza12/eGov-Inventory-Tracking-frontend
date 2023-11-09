@@ -16,29 +16,29 @@
       rel="stylesheet"
     />
     <div id="wrapper" class="wrapper-content">
-      <div id="sidebar-wrapper">
+      <div id="sidebar-wrapper" *ngIf="loggedIn">
         <ul class="sidebar-nav">
             <li>
-                <a href="assets">Assets</a>
+                <button class="btn btn-outline-secondary" (click)="assets()">Assets</button>
               </li>
               <li>
-                <a href="all-devices">Devices</a>
+                <button class="btn btn-outline-secondary" (click)="allDevices()">Devices</button>
               </li>
               <li>
-                <a href="departments">Departments</a>
+                <button class="btn btn-outline-secondary" (click)="departments()">Departments</button>
               </li>
               <li>
-                <a href="automations">Automations</a>
+                <button class="btn btn-outline-secondary" (click)="automations()">Automations</button>
               </li>
               <li >
-                <a href="control-zones">Control Zones</a>
+                <button class="btn btn-outline-secondary" (click)="controlZones()">Control Zones</button>
               </li>
               <li >
-                <a href="TheMap">Map</a>
+                <button class="btn btn-outline-secondary" (click)="theMap()">Map</button>
               </li>
               
               <li>
-                <a href="login">Logout</a>
+                <button class="btn btn-outline-secondary" (click)="logout($event)">Logout</button>
               </li>
         </ul>
       </div>

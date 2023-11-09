@@ -7,6 +7,8 @@ import { HttpClientModule } from "@angular/common/http";
 import { NgxPaginationModule } from 'ngx-pagination';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
+import { MatTreeModule } from '@angular/material/tree';
+import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatInputModule } from '@angular/material/input';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { MatCheckboxModule } from '@angular/material/checkbox';
@@ -41,6 +43,7 @@ import { AutomationDetailsComponent } from './components/automation-details/auto
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -65,7 +68,7 @@ import { RegisterComponent } from './components/register/register.component';
     TheMapComponent,
     AutomationDetailsComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,
@@ -73,7 +76,9 @@ import { RegisterComponent } from './components/register/register.component';
     HttpClientModule,
     FormsModule,
     MatDividerModule,
+    MatTreeModule,
     MatIconModule,
+    MatSidenavModule,
     MatCheckboxModule,
     MatListModule,
     NgxPaginationModule,
