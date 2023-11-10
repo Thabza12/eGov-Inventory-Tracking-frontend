@@ -143,6 +143,7 @@ export class ControlZonesComponent implements OnInit {
     const params = new HttpParams().set('page', this.page).set('page_size', this.page_size);
     this.http.get('http://localhost:8081/Zones', { params }).subscribe((data: any) => {
       this.zones = data;
+      console.log(this.zones)
     });
   }
   changePage(pg: number) {
@@ -156,13 +157,20 @@ export class ControlZonesComponent implements OnInit {
 
 
 
-  zoneDetails(name: string,id :string) {
+  zoneDetails(id :string) {
     this.zones.forEach(zone => {
-      if (name === zone.name) {
+      if (id === zone.id) {
+        console.log(id)
+        let mapData = {
+          id: id,
+          lat: zone.lat,
+          lng: zone.lng
+        }
+        this._shared.setMapData(mapData)
         this._shared.setZoneDetails([zone])
         this._router.navigate(['zone-details'])
-        console.log(name)
-        console.log(zone)
+        // console.log(name)
+        // console.log(zone)
       }
     });
 

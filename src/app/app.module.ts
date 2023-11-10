@@ -43,6 +43,10 @@ import { TheMapComponent } from './components/the-map/the-map.component';
 import { AutomationDetailsComponent } from './components/automation-details/automation-details.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
+import { DeviceHardwareComponent } from './components/device-hardware/device-hardware.component';
+import { LockDeviceComponent } from './components/lock-device/lock-device.component';
+import { ArletMessageComponent } from './components/arlet-message/arlet-message.component';
+import { AlarmComponent } from './components/alarm/alarm.component';
 
 
 @NgModule({
@@ -70,6 +74,10 @@ import { RegisterComponent } from './components/register/register.component';
     AutomationDetailsComponent,
     LoginComponent,
     RegisterComponent,
+    DeviceHardwareComponent,
+    LockDeviceComponent,
+    ArletMessageComponent,
+    AlarmComponent,
   ],
   imports: [
     BrowserModule,

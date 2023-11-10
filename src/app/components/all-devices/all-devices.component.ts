@@ -7,7 +7,7 @@ import { ngxCsv } from "ngx-csv/ngx-csv";
 import { flatMap } from 'rxjs';
 import * as pdfMake from 'pdfmake/build/pdfmake';
 import * as pdfFonts from 'pdfmake/build/vfs_fonts';
-import {ApiService} from 'src/app/services/api.service';
+import { ApiService } from 'src/app/services/api.service';
 
 (pdfMake as any).vfs = pdfFonts.pdfMake.vfs
 
@@ -673,7 +673,9 @@ export class AllDevicesComponent implements OnInit {
 
 
   constructor(private _shared: SharedService,
-    private _router: Router, private http: HttpClient,private service:ApiService) { }
+    private _router: Router,
+    private http: HttpClient, 
+    private service: ApiService) { }
 
   ngOnInit(): void {
     // this.devices = this._shared.getAllDevices();
@@ -681,31 +683,35 @@ export class AllDevicesComponent implements OnInit {
   }
   loadData() {
     const params = new HttpParams().set('page', this.page).set('page_size', this.page_size);
-    this.http.get('http://localhost:8081/AllDevices', { params }).subscribe((data: any) => {
+    this.http.get('http://localhost:8081/all', { params }).subscribe((data: any) => {
       this.TheDevices = data;
       console.log(this.TheDevices);
     });
   }
 
   deviceDetails(id: any) {
-    this.service.getApiKot(`Device/${id}`).subscribe((data)=>{
-      console.log(data)
-      let mapData = {
-        id:id,
-        lat:data.Location.lat,
-        lng:data.Location.lng
-      }
+    // this.service.getApiKot(`Device/${id}`).subscribe((data)=>{
+    //   console.log(data)
+    //   
 
-      this._shared.setMapData(mapData);
-      // this._router.navigate(['device-management']);
-    });
+
+    // });
+
+    
     this.TheDevices.forEach(device => {
       if (id === device.id) {
+        let mapData = {
+          id: id,
+          lat: device.location.lat,
+          lng: device.location.lng
+        }
+        this._shared.setMapData(mapData);
         this._shared.setDeviceDetails(device)
         this._router.navigate(['device-management']);
       }
 
     });
+
 
   }
 
@@ -715,19 +721,19 @@ export class AllDevicesComponent implements OnInit {
 
     this.TheDevices.forEach(device => {
       let pdfData = {
-        name: device.name, 
+        name: device.name,
         client_outdated: device.client_outdated,
         client_version: device.client_version,
         description: device.description,
-        id: device.id, 
+        id: device.id,
         labels: device.labels[0].name,
-        missing: device.missing, 
-        os_details: device.os_details.os, 
+        missing: device.missing,
+        os_details: device.os_details.os,
         report_count: device.reports_details.reportsCount,
         unreade_reports: device.reports_details.unreadReports,
-        type: device.type, 
-        user: device.user.email, 
-  
+        type: device.type,
+        user: device.user.email,
+
       }
 
       data.push(pdfData);
@@ -742,10 +748,10 @@ export class AllDevicesComponent implements OnInit {
     // ];
 
     const columns = Object.keys(data[0]);
-    const headers = columns.map((column) => ({text: column, style: 'tableHeader'}));
+    const headers = columns.map((column) => ({ text: column, style: 'tableHeader' }));
 
     const rows = data.flatMap((device: any) => {
-      const cells = columns.map((column) => ({text: device[column]}));
+      const cells = columns.map((column) => ({ text: device[column] }));
 
       // const automationRows = device.automations.flatMap((auto: any) => {
       //   const autoColumns = Object.keys(auto);
@@ -777,7 +783,7 @@ export class AllDevicesComponent implements OnInit {
       //   // const hardwareRows = this.TheDevices[0].device_details.hardware[0].data.map((data: any) => Object.keys(data).map((key1) => ({text: data[key1]})));
       //   // console.log(detailCells)
       //   return [...[detailCells]];
-      
+
       // });
       // const automationRows = device.automations.map((automation: any) => Object.keys(automation).map((key) => ({text: automation[key]})));
       // const labelRows = device.labels.map((label: any) => Object.keys(label).map((key1) => ({text: label[key1]})));
@@ -786,13 +792,13 @@ export class AllDevicesComponent implements OnInit {
       return [...[cells]];
     });
 
-    
 
-    
 
-    
 
-    
+
+
+
+
 
     // const detailRows = this.TheDevices[0].device_details.hardware[0].flatMap((detail: any) => {
     //   const cells = columns.map((column) => ({text: detail[column]}));
@@ -817,25 +823,25 @@ export class AllDevicesComponent implements OnInit {
     // pdfMake.createPdf(docDefinition).open();
   }
 
-  generateCsv(){
+  generateCsv() {
 
     const data: any = []
 
     this.TheDevices.forEach(device => {
       let pdfData = {
-        name: device.name, 
+        name: device.name,
         client_outdated: device.client_outdated,
         client_version: device.client_version,
         description: device.description,
-        id: device.id, 
+        id: device.id,
         labels: device.labels[0].name,
-        missing: device.missing, 
-        os_details: device.os_details.os, 
+        missing: device.missing,
+        os_details: device.os_details.os,
         report_count: device.reports_details.reportsCount,
         unreade_reports: device.reports_details.unreadReports,
-        type: device.type, 
-        user: device.user.email, 
-  
+        type: device.type,
+        user: device.user.email,
+
       }
 
       data.push(pdfData);
@@ -852,7 +858,7 @@ export class AllDevicesComponent implements OnInit {
       noDownload: false,
       showTitle: false,
       useBom: false,
-      headers:['name', 'client_outdated', 'client_version', 'description', 'id', 'labels', 'missing', 'os_details', 'reports_counts', 'unread_report', 'type', 'user']
+      headers: ['name', 'client_outdated', 'client_version', 'description', 'id', 'labels', 'missing', 'os_details', 'reports_counts', 'unread_report', 'type', 'user']
     };
 
     new ngxCsv(data, "devices-report", options);

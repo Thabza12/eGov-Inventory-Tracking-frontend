@@ -1,13 +1,12 @@
 .card {
 
   position: absolute;
-  width: 1200px;
+  width: 800px;
   height: fit-content;
   display: flex;
   justify-content: center;
-  left: 5%;
-  height: 600px;
-  top: 0px;
+  left: 20%;
+  margin-top: 6%;
 
   .card-body {
     position: absolute;
@@ -27,7 +26,7 @@
     left: 0%;
     top: 40%;
 
-  }
+  } 
 
 }
 

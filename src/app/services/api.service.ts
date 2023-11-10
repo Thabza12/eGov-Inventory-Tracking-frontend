@@ -37,6 +37,10 @@ export class ApiService {
     return this._http.get<any>(this.kotUrl + url);
   }
 
+  putApiKot(url: string, body: any){
+    return this._http.put<any>(this.kotUrl + url, body)
+  }
+
   postApi(url: string, body: any){
     return this._http.post<any>(this.baseUrl + url, body);
   }

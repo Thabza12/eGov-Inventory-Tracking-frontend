@@ -17,8 +17,18 @@ export class SharedService {
   departmentDetails: Departments[] = []
   deviceDetails: Devices[] = [];
   mapData:any[]=[];
+  hardware:any[]=[];
 
   constructor() { }
+
+  setDeviceHardware(data: any){
+    this.hardware = data;
+  }
+
+  getDeviceHardware(){
+    return this.hardware;
+  }
+
   getMapData(){
     return this.mapData;
   }

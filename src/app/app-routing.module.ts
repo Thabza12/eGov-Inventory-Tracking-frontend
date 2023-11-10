@@ -19,6 +19,7 @@ import { AutomationDetailsComponent } from './components/automation-details/auto
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { isAuthenticatedGuard } from './auth-gaurd/is-authenticated.guard';
+import { DeviceHardwareComponent } from './components/device-hardware/device-hardware.component';
 // import { SideNavComponent } from './components/side-nav/side-nav.component';
 
 const routes: Routes = [
@@ -27,6 +28,7 @@ const routes: Routes = [
   {path: 'departments', component: DepartmentsComponent, canActivate: [isAuthenticatedGuard]},
   {path: 'devices', component: DevicesComponent, canActivate: [isAuthenticatedGuard]},
   {path: 'map', component: MapComponent, canActivate: [isAuthenticatedGuard]},
+  {path: 'device-hardware', component: DeviceHardwareComponent, canActivate: [isAuthenticatedGuard]},
   {path: 'update-zone', component: UpdateZoneComponent, canActivate: [isAuthenticatedGuard]},
   {path: 'device-management', component: AllDevicesDetailsComponent, canActivate: [isAuthenticatedGuard]},
   {path: 'all-devices', component: AllDevicesComponent, canActivate: [isAuthenticatedGuard]},

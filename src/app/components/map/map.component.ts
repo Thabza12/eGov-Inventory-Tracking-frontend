@@ -34,7 +34,7 @@ export class MapComponent implements OnInit {
      this.map = new mapboxgl.Map({
       container: 'map', // container ID
       style: 'mapbox://styles/mapbox/streets-v12', // style URL
-      center: [this.lng ,this.lat], // starting position [lng, lat]
+      center: [this.lng, this.lat], // starting position [lng, lat]
       zoom: 9, // starting zoom
       });
       
