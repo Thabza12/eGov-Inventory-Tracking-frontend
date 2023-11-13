@@ -698,9 +698,6 @@ export class AllDevicesComponent implements OnInit {
   deviceDetails(id: any) {
     // this.service.getApiKot(`Device/${id}`).subscribe((data)=>{
     //   console.log(data)
-    //   
-
-
     // });
 
     
