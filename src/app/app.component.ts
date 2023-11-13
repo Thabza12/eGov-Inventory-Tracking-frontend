@@ -43,6 +43,10 @@ export class AppComponent implements OnInit {
     this._router.navigate(['/the-map']);
   }
 
+  report(){
+    this._router.navigate(['/report']);
+  }
+
   controlZones(){
     this._router.navigate(['/control-zones']);
   }
