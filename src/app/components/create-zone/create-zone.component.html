@@ -43,9 +43,9 @@
               <tr>
                 <th>Name</th>
                 <th>Missing</th>
-                <th>State</th>
+                <!-- <th>State</th> -->
                 <th>
-                  <mat-checkbox (change)="selectAll($event)"></mat-checkbox>
+                  <mat-checkbox class="mdc-checkbox" (change)="selectAll($event)"></mat-checkbox>
                   Select All
                 </th>
               </tr>
@@ -63,7 +63,7 @@
                             ">
                 <td>{{ device.name }}</td>
                 <td>{{ device.missing }}</td>
-                <td>{{ device.state }}</td>
+                <!-- <td>{{ device.state }}</td> -->
                 <td>
                   <mat-checkbox (change)="selectRow(device.name)"></mat-checkbox>
                 </td>

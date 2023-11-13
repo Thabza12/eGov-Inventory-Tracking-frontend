@@ -5,6 +5,7 @@ import { SharedService } from 'src/app/services/shared.service';
 import { ZoneDetailsComponent } from '../zone-details/zone-details.component';
 import { UpdateZoneComponent } from '../update-zone/update-zone.component';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { SnackbarService } from 'src/app/shared/snackbar.service';
 
 @Component({
   selector: 'app-control-zones',
@@ -132,6 +133,7 @@ export class ControlZonesComponent implements OnInit {
 
   constructor(private _router: Router,
     private _shared: SharedService,
+    private _snackbar: SnackbarService,
     private http: HttpClient) { }
 
   ngOnInit(): void {
@@ -144,6 +146,9 @@ export class ControlZonesComponent implements OnInit {
     this.http.get('http://localhost:8081/Zones', { params }).subscribe((data: any) => {
       this.zones = data;
       console.log(this.zones)
+    }, error =>{
+      // console.log(error);
+      this._snackbar.openSnackbar("Error loading server, please try again later", error);
     });
   }
   changePage(pg: number) {

@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/shared/auth.service';
+import { SnackbarService } from 'src/app/shared/snackbar.service';
 
 @Component({
   selector: 'app-login',
@@ -18,7 +19,8 @@ export class LoginComponent {
   // public error = null;
 
   constructor(private authservice: AuthService, 
-    private _router: Router) { }
+    private _router: Router, 
+    private _snackbar: SnackbarService) { }
 
   // login() {
   //   this.authservice.login(this.empNumber, this.Empassword).subscribe((response) => {
@@ -38,6 +40,7 @@ export class LoginComponent {
       (response) => {
         // console.log(response)
         // this.handleResponse(response)
+        this._snackbar.openSnackbar("Login successful...", response)
         this._router.navigate(['/assets']);
         
       }

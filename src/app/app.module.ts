@@ -17,6 +17,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatDialogModule } from '@angular/material/dialog'
 import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { DevicesComponent } from './components/devices/devices.component';
@@ -48,6 +49,7 @@ import { LockDeviceComponent } from './components/lock-device/lock-device.compon
 import { ArletMessageComponent } from './components/arlet-message/arlet-message.component';
 import { AlarmComponent } from './components/alarm/alarm.component';
 import { EGovComponent } from './components/e-gov/e-gov.component';
+import { NgxUiLoaderHttpModule, NgxUiLoaderModule } from 'ngx-ui-loader';
 
 
 @NgModule({
@@ -95,9 +97,14 @@ import { EGovComponent } from './components/e-gov/e-gov.component';
     MatListModule,
     NgxPaginationModule,
     MatFormFieldModule,
+    MatSnackBarModule,
     MatSelectModule,
     MatSliderModule,
     NgxChartsModule,
+    NgxUiLoaderModule,
+    NgxUiLoaderHttpModule.forRoot({
+      showForeground: true,
+    }),
     MatPaginatorModule,
     MatInputModule,
     ReactiveFormsModule,
