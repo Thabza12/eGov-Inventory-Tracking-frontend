@@ -35,14 +35,12 @@
           </div>
         </div>
         <br />
-        <br />
         <div>
-          <h2>Actions</h2>
+          <h2>Events</h2>
           <table class="table table-hover table-striped">
             <thead>
               <tr>
                 <th>Type</th>
-                <th>Info</th>
                 <!-- <th>Options</th> -->
               </tr>
             </thead>
@@ -50,7 +48,29 @@
               <tr *ngFor="let event of automation_events | paginate: { id: 'action_pagination',
     itemsPerPage: 10, currentPage: page, totalItems: totalRecords }">
                                 <td>{{event.type}}</td>
-                                <td>{{event.info}}</td> 
+                        
+              <!-- <td>{{action.options}}</td> -->
+               </tr> 
+            </tbody>
+          </table>
+          <div>
+            <!-- <pagination-controls id="action_pagination" (pageChange)="page = $event"></pagination-controls> -->
+          </div>
+        </div>
+        <br />
+        <div>
+          <h2>Actions</h2>
+          <table class="table table-hover table-striped">
+            <thead>
+              <tr>
+                <th>Type</th>
+                <!-- <th>Options</th> -->
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let actions of automation_actions | paginate: { id: 'action_pagination',
+    itemsPerPage: 10, currentPage: page, totalItems: totalRecords }">
+                                <td>{{actions.action.target}}</td>
               <!-- <td>{{action.options}}</td> -->
                </tr> 
             </tbody>

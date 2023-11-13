@@ -33,6 +33,7 @@ export class AutomationDetailsComponent implements OnInit{
     this.automation = this._shared.getAutomationDetails();
     this.automationDevice(this._shared.getAutomationDetails());
     this.automationEvents(this._shared.getAutomationDetails());
+    this.automationActions(this._shared.getAutomationDetails());
     
   }
   automationDevice(data: any) {
@@ -47,6 +48,13 @@ export class AutomationDetailsComponent implements OnInit{
       this.automation_events = data[0].automation_events;
       this.totalRecords = this.automation_events.length;
       console.log('Events', data[0].automation_events);
+    }
+  }
+  automationActions(data: any) {
+    if (data[0].automation_actions) {
+      this.automation_actions = data[0].automation_actions;
+      this.totalRecords = this.automation_actions.length;
+      console.log('Actions', data[0].automation_actions);
     }
   }
   

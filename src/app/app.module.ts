@@ -47,6 +47,7 @@ import { DeviceHardwareComponent } from './components/device-hardware/device-har
 import { LockDeviceComponent } from './components/lock-device/lock-device.component';
 import { ArletMessageComponent } from './components/arlet-message/arlet-message.component';
 import { AlarmComponent } from './components/alarm/alarm.component';
+import { EGovComponent } from './components/e-gov/e-gov.component';
 
 
 @NgModule({
@@ -78,6 +79,7 @@ import { AlarmComponent } from './components/alarm/alarm.component';
     LockDeviceComponent,
     ArletMessageComponent,
     AlarmComponent,
+    EGovComponent,
   ],
   imports: [
     BrowserModule,

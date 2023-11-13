@@ -1,0 +1,39 @@
+
+
+<input [(ngModel)]="SearchParams"
+placeholder="Search"/>
+<button (click)="search()">search</button>
+
+    <div class="card">
+      <div class="card-body">
+        <br>
+        <table class="table table-hover table-striped">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>INVNR</th>
+              <th>SERNR</th>
+              <th>TXT50</th>
+              <th>PERNR</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let device of LaptopData">
+              <td>{{device.ID}}</td>
+              <td>{{device.INVNR}}</td>
+              <td>{{device.SERNR}}</td>
+              <td>{{device.TXT50}}</td>
+              <td>{{device.PERNR}}</td>
+              <td>
+                <button (click)="deviceDetails(device.Id)" style="height: 35px;" type="button"
+                  class="btn btn-outline-info me-2">
+                  <mat-icon aria-label="info icon" fontIcon="info"></mat-icon>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  

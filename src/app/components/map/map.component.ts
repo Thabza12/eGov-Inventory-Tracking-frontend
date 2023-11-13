@@ -23,7 +23,8 @@ export class MapComponent implements OnInit {
     this.id = this.mapData.id;
     this.lng = this.mapData.lng;
     this.lat = this.mapData.lat;
-    // this.id = this._shared.getZonesDetails()[0].id;
+    
+    //this.id = this._shared.getZonesDetails()[0].id;
     //   this.lat = this._shared.getZonesDetails()[0].lat;
     //   this.lng = this._shared.getZonesDetails()[0].lng;
     //   this.radius = this._shared.getZonesDetails()[0].radius;

@@ -36,11 +36,11 @@ export class AppComponent implements OnInit {
   }
 
   departments(){
-    this._router.navigate(['/departments']);
+    this._router.navigate(['/eGov']);
   }
 
   theMap(){
-    this._router.navigate(['/map']);
+    this._router.navigate(['/the-map']);
   }
 
   controlZones(){

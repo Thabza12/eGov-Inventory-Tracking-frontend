@@ -20,6 +20,7 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { isAuthenticatedGuard } from './auth-gaurd/is-authenticated.guard';
 import { DeviceHardwareComponent } from './components/device-hardware/device-hardware.component';
+import { EGovComponent } from './components/e-gov/e-gov.component';
 // import { SideNavComponent } from './components/side-nav/side-nav.component';
 
 const routes: Routes = [
@@ -39,7 +40,8 @@ const routes: Routes = [
   {path: 'automations', component: AutomationsComponent, canActivate: [isAuthenticatedGuard]},
   {path: 'control-zones', component: ControlZonesComponent, canActivate: [isAuthenticatedGuard]},
   {path: 'create-zone', component: CreateZoneComponent, canActivate: [isAuthenticatedGuard]},
-  {path: 'map',component:TheMapComponent, canActivate: [isAuthenticatedGuard]},
+  {path: 'eGov',component:EGovComponent},
+  {path: 'the-map',component:TheMapComponent, canActivate: [isAuthenticatedGuard]},
   {path: 'automation-details',component:AutomationDetailsComponent, canActivate: [isAuthenticatedGuard]},
   {path: '', redirectTo: '/login', pathMatch: 'full'},
   {path: 'login', component:LoginComponent},

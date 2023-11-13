@@ -1,6 +1,7 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import * as mapboxgl from 'mapbox-gl';
+import { SharedService } from 'src/app/services/shared.service';
 
 @Component({
   selector: 'app-the-map',
@@ -12,55 +13,58 @@ export class TheMapComponent implements OnInit {
   page:number =1;
   page_size:number = 20;
   GeoFence:any[]=[];
-  constructor(private http:HttpClient){}
+  id:any;
+  lat:any;
+  lng:any;
+  radius:any;
+  color:any;
+  constructor(private http:HttpClient, private _shared:SharedService){}
   ngOnInit(): void {
-    
-    const params = new HttpParams().set('page', this.page).set('page_size', this.page_size);
-    this.http.get('http://localhost:8081/Zones', { params }).subscribe((data: any) => {
-      this.GeoFence = data;
-    });
+    this.id = this._shared.getZonesDetails()[0].id;
+    this.lat = this._shared.getZonesDetails()[0].lat;
+    this.lng = this._shared.getZonesDetails()[0].lng;
+    this.radius = this._shared.getZonesDetails()[0].radius;
+    this.color = this._shared.getZonesDetails()[0].color;
+
     (mapboxgl as typeof mapboxgl).accessToken = 'pk.eyJ1IjoibmVvemEiLCJhIjoiY2xvZnkwOTRiMHh1YTJrcndmam82em42aSJ9.DAxTwxCFRRjQ_BZ7y4ODgw';
      this.map = new mapboxgl.Map({
       container: 'map', // container ID
       style: 'mapbox://styles/mapbox/streets-v12', // style URL
-      center: [-71.1860211709, -32.9888719695], // starting position [lng, lat]
-      zoom: 5, // starting zoom
+      center: [this.lng, this.lat], // starting position [lng, lat]
+      zoom: 14, // starting zoom
       });
       this.map.on('load', () => {
-        this.GeoFence.forEach(Geo =>{
-          console.log(Geo.id)
-          console.log(Geo)
-          this.map.addSource(Geo.id, {
+          console.log(this.id)
+          this.map.addSource(this.id, {
             type: 'geojson',
             data: {
                 "type": "FeatureCollection",
                 "features": [{
                     "type": "Feature",
                     "properties": {
-                      radius:Geo.radius
+                      radius:this.radius
                     },
                     "geometry": {
                         "type": "Point",
                         "coordinates": [
-                            Geo.lng,
-                            Geo.lat
+                          this.lng,
+                          this.lat
                         ]
                     }
                 }]
             }
         });
         this.map.addLayer({
-        'id': Geo.id,
+        'id': this.id,
         'type': 'circle',
-        'source': Geo.id,
+        'source': this.id,
         'paint': {
-        'circle-radius': Geo.radius,
+        'circle-radius': this.radius,
         'circle-color':'transparent',
-        'circle-stroke-color':Geo.color,
+        'circle-stroke-color':this.color,
         'circle-stroke-width':2
         },
         
-        });
         });
       });
       
