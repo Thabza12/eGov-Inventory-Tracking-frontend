@@ -50,6 +50,8 @@ import { ArletMessageComponent } from './components/arlet-message/arlet-message.
 import { AlarmComponent } from './components/alarm/alarm.component';
 import { EGovComponent } from './components/e-gov/e-gov.component';
 import { NgxUiLoaderHttpModule, NgxUiLoaderModule } from 'ngx-ui-loader';
+import { ReportComponent } from './components/report/report.component';
+import { PdfViewerModule } from 'ng2-pdf-viewer';
 
 
 @NgModule({
@@ -82,6 +84,7 @@ import { NgxUiLoaderHttpModule, NgxUiLoaderModule } from 'ngx-ui-loader';
     ArletMessageComponent,
     AlarmComponent,
     EGovComponent,
+    ReportComponent,
   ],
   imports: [
     BrowserModule,
@@ -100,6 +103,7 @@ import { NgxUiLoaderHttpModule, NgxUiLoaderModule } from 'ngx-ui-loader';
     MatSnackBarModule,
     MatSelectModule,
     MatSliderModule,
+    PdfViewerModule,
     NgxChartsModule,
     NgxUiLoaderModule,
     NgxUiLoaderHttpModule.forRoot({
@@ -114,3 +118,5 @@ import { NgxUiLoaderHttpModule, NgxUiLoaderModule } from 'ngx-ui-loader';
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+// platformBrowserDynamic().bootstrapModule(AppModule);
