@@ -10,6 +10,7 @@ import { HttpClient,HttpHeaders, HttpParams} from '@angular/common/http';
 import { AutomationDevices } from 'src/app/classes/automation-devices';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { AutomationDetailsComponent } from '../automation-details/automation-details.component';
+import { SnackbarService } from 'src/app/shared/snackbar.service';
 
 @Component({
   selector: 'app-automations',
@@ -257,6 +258,7 @@ export class AutomationsComponent implements OnInit {
   page: number = 1;
   page_size:number = 10;
   constructor(private _router: Router,
+    private _snackbar: SnackbarService,
     private http:HttpClient,
     private _shared:SharedService,
     public dialog: MatDialog,) { }
@@ -269,6 +271,9 @@ export class AutomationsComponent implements OnInit {
     const params = new HttpParams().set('page',this.page).set('page_size',this.page_size);
     this.http.get('http://localhost:8081/Automations',{params}).subscribe((data:any)=>{
       this.automations= data;
+    }, error =>{
+      // console.log(error);
+      this._snackbar.openSnackbar("Error loading server, please try again later", error);
     });
   }
   changePage(pg:number){

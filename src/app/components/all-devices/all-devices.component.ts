@@ -5,9 +5,11 @@ import { SharedService } from 'src/app/services/shared.service';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { ngxCsv } from "ngx-csv/ngx-csv";
 import { flatMap } from 'rxjs';
+import { StyleDictionary } from 'pdfmake/interfaces';
 import * as pdfMake from 'pdfmake/build/pdfmake';
 import * as pdfFonts from 'pdfmake/build/vfs_fonts';
 import { ApiService } from 'src/app/services/api.service';
+import { SnackbarService } from 'src/app/shared/snackbar.service';
 
 (pdfMake as any).vfs = pdfFonts.pdfMake.vfs
 
@@ -675,7 +677,8 @@ export class AllDevicesComponent implements OnInit {
   constructor(private _shared: SharedService,
     private _router: Router,
     private http: HttpClient, 
-    private service: ApiService) { }
+    private service: ApiService,
+    private _snackbar: SnackbarService) { }
 
   ngOnInit(): void {
     // this.devices = this._shared.getAllDevices();
@@ -686,8 +689,11 @@ export class AllDevicesComponent implements OnInit {
     this.http.get('http://localhost:8081/all', { params }).subscribe((data: any) => {
       this.TheDevices = data;
       console.log(this.TheDevices);
+    }, error =>{
+      // console.log(error);
+      this._snackbar.openSnackbar("Error loading server, please try again later", error);
     });
-  }
+  }    
 
   deviceDetails(id: any) {
     // this.service.getApiKot(`Device/${id}`).subscribe((data)=>{
@@ -716,111 +722,131 @@ export class AllDevicesComponent implements OnInit {
   }
 
   generatePdf() {
-
-    const data: any = []
-
-    this.TheDevices.forEach(device => {
-      let pdfData = {
-        name: device.name,
-        client_outdated: device.client_outdated,
-        client_version: device.client_version,
-        description: device.description,
-        id: device.id,
-        labels: device.labels[0].name,
-        missing: device.missing,
-        os_details: device.os_details.os,
-        report_count: device.reports_details.reportsCount,
-        unreade_reports: device.reports_details.unreadReports,
-        type: device.type,
-        user: device.user.email,
-
-      }
-
-      data.push(pdfData);
-    });
-
-    console.log(data);
-
-    // const data = [['Name', 'Operating System', 'Description', 'Missing', 'Outdated'],
-    // ['John Doe', 'johndoe@example.com', 'USA'],
-    // ['Jane Smith', 'janesmith@example.com', 'Canada'],
-    // ['Bob Johnson', 'bobjohnson@example.com', 'UK']
-    // ];
-
-    const columns = Object.keys(data[0]);
-    const headers = columns.map((column) => ({ text: column, style: 'tableHeader' }));
-
-    const rows = data.flatMap((device: any) => {
-      const cells = columns.map((column) => ({ text: device[column] }));
-
-      // const automationRows = device.automations.flatMap((auto: any) => {
-      //   const autoColumns = Object.keys(auto);
-      //   const autoCells = autoColumns.map((autoColumn) => ({text: auto[autoColumn]}))
-      //   const links = auto.links.map((link: any) => Object.keys(link).map((key) => ({text: link[key]})));
-      //   console.log('auto links:', links);
-      //   return [...[autoCells], ...links];
-      // });
-
-      // const labelRows = device.labels.flatMap((label: any) => {
-      //   const labelColumns = Object.keys(label);
-      //   const labelCells = labelColumns.map((labelColumn) => ({text: label[labelColumn]}))
-      //   const links = label.links.map((link: any) => Object.keys(link).map((key) => ({text: link[key]})));
-      //   console.log('label links:', links);
-      //   return [...[labelCells], ...links];
-      // });
-
-      // const zoneRows = device.zones.flatMap((zone: any) => {
-      //   const zoneColumns = Object.keys(zone);
-      //   const zoneCells = zoneColumns.map((zoneColumn) => ({text: zone[zoneColumn]}))
-      //   const links = zone.links.map((link: any) => Object.keys(link).map((key) => ({text: link[key]})));
-      //   console.log('zone links:', links);
-      //   return [...[zoneCells], ...links];
-      // });
-
-      // const detailsRows = device.device_details.hardware[0].data.flatMap((detail: any) => {
-      //   const detailColumns = Object.keys(detail);
-      //   const detailCells = detailColumns.map((detailColumn) => ({text: detail[detailColumn]}));
-      //   // const hardwareRows = this.TheDevices[0].device_details.hardware[0].data.map((data: any) => Object.keys(data).map((key1) => ({text: data[key1]})));
-      //   // console.log(detailCells)
-      //   return [...[detailCells]];
-
-      // });
-      // const automationRows = device.automations.map((automation: any) => Object.keys(automation).map((key) => ({text: automation[key]})));
-      // const labelRows = device.labels.map((label: any) => Object.keys(label).map((key1) => ({text: label[key1]})));
-      // const zoneRows = device.zones.map((zone: any) => Object.keys(zone).map((key) => ({text: zone[key]})));
-
-      return [...[cells]];
-    });
-
-
-
-
-
-
-
-
-
-    // const detailRows = this.TheDevices[0].device_details.hardware[0].flatMap((detail: any) => {
-    //   const cells = columns.map((column) => ({text: detail[column]}));
-    //   return [...[cells]]
-    // })
-
-    console.log(rows);
-
-    let docDefinition = {
+   
+    const docDefinition = {
       content: [
-        { text: 'Device Data', style: 'header' },
-        { table: { headerRows: 1, widths: headers.map(() => '*'), body: [headers, ...rows] } }
+        {
+          text: 'Device Report',
+          bold: true,
+          fontSize: 20,
+          // alignment: 'center',
+          // margin: [0, 0, 0, 20],
+        },
+        {
+          text: ' ', 
+        },
+        {
+          text: ' ', 
+        },
+        {
+          text: 'Report Date:',
+          bold: true,
+        },
+        {
+          text: 'Nov 10, 2023 - 17:09', 
+        },
+        {
+          text: ' ', 
+        },
+        {
+          text: ' ', 
+        },
+        {
+          text: 'Ownwer:',
+          bold: true,
+        },
+        {
+          text: 'Neo Ngabutle', 
+        },
+        {
+          text: ' ', 
+        },
+        {
+          text: ' ', 
+        },
+        {
+          text: 'Logged User:',
+          bold: true,
+        },
+        {
+          text: 'Gauteng_Law',   
+        },
+        {
+          text: ' ', 
+        },
+        {
+          text: ' ', 
+        },
+        {
+          text: 'Device Location',
+          bold: true,
+        },
+        {
+          table:{
+            body: [
+              ['Latitude', 'Longitude'],
+              ['-25.9448254', '28.1127602']
+            ]
+          }
+        },
+        {
+          text: ' ', 
+        },
+        {
+          text: ' ', 
+        },
+        {
+          text: 'IP Addresses',
+          bold: true,
+        },
+        {
+          
+          table:{
+            body: [
+              ['SSID', 'Public IP', 'Private IP', 'Gateway IP', 'MAC Address'],
+              ['Nkgabutle%20', '41.23.4.241', '192.168.39.137', '192.168.39.1', '58:d9:d5:b9:e1:5c']
+            ]
+          }
+        },
+        {
+          text: ' ', 
+        },
+        {
+          text: ' ', 
+        },
+        {
+          text: 'Device Details', 
+          bold: true,
+        },
+        {
+          table:{
+            body: [
+              ['CPU', 'RAM', 'MAC Address', 'Serial Number', 'UUID', 'BIOS Vendor', 'BIOS Version'],
+              ['2.694 GHzIntel(R) Core(TM) i5-4310M CPU @ 2.70GHz', '4096MB', '34:E6:D7:30:E5:43', '7TCBL12', '4C4C4544-0054-4310-8042-B7C04F4C3132', 'Dell Inc.', 'A09']
+            ]
+          }
+        }
+        
       ],
+      // style: {
+      //   header: {
+      //     fontSize: 18,
+      //     bold: true,
+      //     margin: [0, 0, 0, 10]
+      //   },
+      //   subheader: {
+      //     fontSize: 16,
+      //     bold: true,
+      //     margin: [0, 10, 0, 5]
+      //   },
+      //   tableExample: {
+      //     margin: [0, 5, 0, 15]
+      //   }
+      // }
+  
     };
 
     pdfMake.createPdf(docDefinition).open();
-
-    // let docDefinition = {
-    //   content: [this.TheDevices]
-    // };
-
-    // pdfMake.createPdf(docDefinition).open();
   }
 
   generateCsv() {
@@ -834,7 +860,7 @@ export class AllDevicesComponent implements OnInit {
         client_version: device.client_version,
         description: device.description,
         id: device.id,
-        labels: device.labels[0].name,
+        // labels: device.labels[0].name,
         missing: device.missing,
         os_details: device.os_details.os,
         report_count: device.reports_details.reportsCount,
@@ -858,26 +884,10 @@ export class AllDevicesComponent implements OnInit {
       noDownload: false,
       showTitle: false,
       useBom: false,
-      headers: ['name', 'client_outdated', 'client_version', 'description', 'id', 'labels', 'missing', 'os_details', 'reports_counts', 'unread_report', 'type', 'user']
+      headers: ['name', 'client_outdated', 'client_version', 'description', 'id', 'missing', 'os_details', 'reports_counts', 'unread_report', 'type', 'user']
     };
 
     new ngxCsv(data, "devices-report", options);
-
-  }
-
-  missing(name: string) {
-
-  }
-
-  lockScreen(name: string) {
-
-  }
-
-  soundAlarm(name: string) {
-
-  }
-
-  locationActivity(name: string) {
 
   }
 
