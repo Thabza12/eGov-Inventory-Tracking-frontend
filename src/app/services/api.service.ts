@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 // import { environment } from 'src/environments/environment';
 import { environment } from 'src/environments/environment';
 @Injectable({
@@ -12,6 +13,8 @@ export class ApiService {
   apiKey = 'ee2ba49ca14b3c3cecae4b7ab55e75c4';
   private baseUrl = `http://localhost:9898/`
   private kotUrl ='http://localhost:8081/';
+  private mapBoxUrl = 'https://api.mapbox.com/geocoding/v5/mapbox.places/';
+  private accessToken = 'pk.eyJ1IjoibmVvemEiLCJhIjoiY2xvZnkwOTRiMHh1YTJrcndmam82em42aSJ9.DAxTwxCFRRjQ_BZ7y4ODgw';
 
   headers(){
     const _headers = new HttpHeaders({
@@ -25,6 +28,14 @@ export class ApiService {
 
     return httpOptions;
 
+  }
+
+  geocodeAddress(address: string): Observable<any>{
+    const params = {
+      access_token: this.accessToken,
+    }
+
+    return this._http.get<any>(`${this.mapBoxUrl}${encodeURIComponent(address)}.json`, {params});
   }
 
   
