@@ -57,9 +57,8 @@
           </div>
         </div>
         <br />
-        <br />
         <div>
-          <h2>Actions</h2>
+          <h2>Event</h2>
           <table class="table table-hover table-striped">
             <thead>
               <tr>
@@ -82,6 +81,41 @@
               >
                 <td>{{ action.context }}</td>
                 <!-- <td>{{action.options}}</td> -->
+              </tr>
+            </tbody>
+          </table>
+          <div>
+            <pagination-controls
+              id="action_pagination"
+              (pageChange)="page = $event"
+            ></pagination-controls>
+          </div>
+        </div>
+        <br />
+        <div>
+          <h2>Actions</h2>
+          <table class="table table-hover table-striped">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <!-- <th>Options</th> -->
+              </tr>
+            </thead>
+            <tbody>
+              <tr
+                *ngFor="
+                  let action of actions
+                    | paginate
+                      : {
+                          id: 'action_pagination',
+                          itemsPerPage: 10,
+                          currentPage: page,
+                          totalItems: totalActions
+                        }
+                "
+              >
+                <td>{{ action.action_name }}</td>
+                <td>{{action.options}}</td>
               </tr>
             </tbody>
           </table>
