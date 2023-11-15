@@ -52,6 +52,8 @@ import { EGovComponent } from './components/e-gov/e-gov.component';
 import { NgxUiLoaderHttpModule, NgxUiLoaderModule } from 'ngx-ui-loader';
 import { ReportComponent } from './components/report/report.component';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
+import { NotificationsComponent } from './components/notifications/notifications.component';
+import { ActionsComponent } from './components/actions/actions.component';
 
 
 @NgModule({
@@ -85,6 +87,8 @@ import { PdfViewerModule } from 'ng2-pdf-viewer';
     AlarmComponent,
     EGovComponent,
     ReportComponent,
+    NotificationsComponent,
+    ActionsComponent,
   ],
   imports: [
     BrowserModule,

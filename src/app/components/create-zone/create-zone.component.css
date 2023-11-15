@@ -4,7 +4,8 @@
     display: flex;
     justify-content: center;
     left: 20%;
-    top: 100px;
+    top: 50px;
+    margin-bottom: 30px;
 }
 
 .mat-slider{
