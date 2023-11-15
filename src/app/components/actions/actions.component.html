@@ -29,7 +29,7 @@
         </div>
         <br>
         <div class="mat-dialog-actions">
-            <button class="mat-raised-button" class="btn btn-outline-danger me-2" mat-button
+            <button class="mat-raised-button" class="btn btn-outline-primary me-2" mat-button
                 (click)="cancel()">Cancel</button>
             <button mat-button [mat-dialog-close]="true" class="btn btn-success" (click)="onSubmit()">Submit</button>
         </div>
@@ -42,6 +42,7 @@
         <label for="sound" class="form-label me-2">Sound:</label>
         <input matInput type="text" [(ngModel)]="sound" placeholder="alarm, modem, ring, siren">
     </div>
+    <br>
     <div class="me-5 mt-3">
         <mat-form-field class="dropdown">
             <mat-label>Context</mat-label>
@@ -59,6 +60,7 @@
         <label for="message" class="form-label me-2">Message:</label>
         <input matInput type="text" [(ngModel)]="message" placeholder="type arlet message">
     </div>
+    <br>
     <div class="me-5 mt-3">
         <mat-form-field class="dropdown">
             <mat-label>Context</mat-label>
@@ -76,6 +78,7 @@
         <label for="password" class="form-label me-2">Password:</label>
         <input matInput type="password" [(ngModel)]="password" placeholder="enter unlock password">
     </div>
+    <br>
     <div class="me-5 mt-3">
         <mat-form-field class="dropdown">
             <mat-label>Context</mat-label>
@@ -93,6 +96,7 @@
         <label for="sound" class="form-label me-2">Report Frequency:</label>
         <input matInput type="text" [(ngModel)]="frequency" placeholder="report frequency (2, 5, 10)">
     </div>
+    <br>
     <div class="me-5 mt-3">
         <mat-form-field class="dropdown">
             <mat-label>Context</mat-label>

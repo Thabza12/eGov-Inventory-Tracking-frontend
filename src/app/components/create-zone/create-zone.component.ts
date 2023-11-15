@@ -34,7 +34,7 @@ export class CreateZoneComponent implements OnInit {
 
   constructor(private _service: ApiService,
     private _shared: SharedService,
-    private http: HttpClient, 
+    private http: HttpClient,
     private _snackbar: SnackbarService,
     private _formBuilder: UntypedFormBuilder,
     public dialog: MatDialog) { }
@@ -45,7 +45,7 @@ export class CreateZoneComponent implements OnInit {
     this.http.get('http://localhost:8081/all', { params }).subscribe((data: any) => {
       this.devices = data
       console.log('devices', this.devices);
-    }, error =>{
+    }, error => {
       // console.log(error);
       this._snackbar.openSnackbar("Error loading server, please try again later", error);
     });
@@ -55,35 +55,38 @@ export class CreateZoneComponent implements OnInit {
       'address': new UntypedFormControl(),
       'radius': new UntypedFormControl(),
       'color': new UntypedFormControl(),
-      // 'devices': new UntypedFormControl(),
-      // 'actions': new UntypedFormControl(),
-      // 'notifications': new UntypedFormControl(),
     })
 
   }
 
   onSubmit(form: UntypedFormGroup) {
-    const body = {
-      name: form.value.name,
-      address: form.value.address,
-      radiusSize: this.selectedSize,
-      radius: form.value.radius,
-      color: this.color,
-      devices: this.selectedRows,
-      actions: this.actions,
-      notification: this.notifications
-    }
 
-    console.log(body);
+    this._service.geocodeAddress(form.value.address).subscribe(data => {
+      if (data.features.length > 0) {
+        const location = data.features[0].center;
 
-    this._service.postApi('url/to/post/zone-form', body).subscribe(data => {
-      console.log(data)
+        const body = {
+          name: form.value.name,
+          lat: location[1],
+          lng: location[0],
+          radiusSize: this.selectedSize,
+          radius: form.value.radius,
+          color: this.color,
+          devices: this.selectedRows,
+          actions: this.actions,
+          notification: this.notifications
+        }
+
+        console.log(body);
+
+        this._service.postApi('url/to/post/zone-form', body).subscribe(data => {
+          console.log(data)
+        })
+      };
     })
-
-
   }
 
-  openDialog(){
+  openDialog() {
 
     const dialogConfig = new MatDialogConfig();
 
@@ -96,7 +99,7 @@ export class CreateZoneComponent implements OnInit {
 
     const dialogRef = this.dialog.open(NotificationsComponent, dialogConfig);
 
-    dialogRef.afterClosed().subscribe(data =>{
+    dialogRef.afterClosed().subscribe(data => {
       console.log("Dialog output: ", data)
 
       let results: Notifications = new Notifications();
@@ -107,7 +110,7 @@ export class CreateZoneComponent implements OnInit {
 
   }
 
-  actionDialog(){
+  actionDialog() {
 
     const dialogConfig = new MatDialogConfig();
 
@@ -115,7 +118,7 @@ export class CreateZoneComponent implements OnInit {
 
     const dialogRef = this.dialog.open(ActionsComponent, dialogConfig);
 
-    dialogRef.afterClosed().subscribe(data =>{
+    dialogRef.afterClosed().subscribe(data => {
       console.log("Dialog output: ", data)
 
       let results: any
