@@ -65,7 +65,7 @@ export class MapComponent implements OnInit {
         'source': this.id,
         'paint': {
         // 'circle-radius': this.radius,
-        'circle-color':'blue',
+        'circle-color':'red',
         // 'circle-stroke-color':'blue',
         // 'circle-stroke-width':2
         },
